@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+
+import{Navbar} from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
+import {
+  Route,
+  Routes,
+  HashRouter
+} from "react-router-dom";
+import {Home} from './pages/Home';
+import {Search} from './pages/Search';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <div>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/Search" element={<Search/>}/>
+          <Route path="/" element={<Home/>}/>
+        </Routes>
+      </div>
+    </HashRouter>
   </React.StrictMode>
 );
 
