@@ -1,13 +1,14 @@
 import * as React from 'react'
-export class AnimalCard extends React.Component{
+import "../animalcardsearch.css"
+export class AnimalCardSearch extends React.Component{
     constructor(props){
         super(props);
     }
 
     render(){
         return(
-            <div>
-                <p>Name: {this.props.name}
+            <div className="animallist">
+                <p><span className="animalnames">Name: {this.props.name}</span>
                 <br></br>
                 Type: {this.props.type}
                 <br></br>

@@ -1,0 +1,33 @@
+body{
+    width:100%
+}
+.flex-box{
+  display:flex;
+}
+.search{
+    flex:1;
+  }
+.results{
+  border-left:2px dotted black;
+  flex:2;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+li{
+  list-style:none;
+}
+.content{
+  flex:2;
+  margin-left:10px;
+}
+.animalnames{
+  font-weight:bold;
+  font-size:1.2em;
+}
+.searchtitles{
+  font-size:1.02em;
+  font-weight: bold;
+}
+
+
+  

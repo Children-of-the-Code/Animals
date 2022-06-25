@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { AnimalCard } from '../components/AnimalCard';
+import { AnimalCardSearch } from '../components/AnimalCardSearch';
+import '../search.css';
+import { AnimalPageSearch } from '../components/AnimalPageSearch';
 
 
 export class Search extends React.Component{
@@ -19,7 +21,8 @@ export class Search extends React.Component{
             gets_along:"",
             sortby:"",
             orderby:"",
-            animals:[]
+            animals:[],
+            currentanimalid:0
         }
                   
     }
@@ -84,22 +87,24 @@ export class Search extends React.Component{
 
     render(){
         return(
-            <div>
-                <div>
+            <div className="flex-box">
+                <div className="search">
                 <ul>
-                <li>Age Range: 
+                <li><span className="searchtitles">Age Range: </span><br></br>
                 <input type="number" value={this.state.age} onChange={event => this.handleChange("age", event)}></input><br></br> 
                 to </li><li>
                 <input type="number" value={this.state.age2} onChange={event => this.handleChange("age2", event)}></input>
                 </li>
-                <li>Gender:
+                <br></br>
+                <li><span className="searchtitles">Gender:</span><br></br>
                 <select name="gender"onChange={event=>this.handleChange("gender", event)}>
                     <option value="">Any</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
                 </li>
-                <li>Temperament: 
+                <br></br>
+                <li><span className="searchtitles">Temperament: </span><br></br>
                 <select name="temperament" onChange={event=>this.handleChange("temperament",event)}>
                     <option value="">Any</option>
                     <option value="Mild">Mild</option>
@@ -108,20 +113,22 @@ export class Search extends React.Component{
                     <option value="Spicy">Spicy</option>
                 </select>
                 </li>
-                <li>Fee Range:
+                <br></br>
+                <li><span className="searchtitles">Fee Range:</span><br></br>
                 <input type="number" value={this.state.fee} onChange={event =>this.handleChange("fee",event)}></input><br></br>
                 to
                 </li><li>
                 <input type="number" value={this.state.fee2} onChange={event=>this.handleChange("fee2",event)}></input>
                 </li>
-                <li>Type:
+                <br></br>
+                <li><span className="searchtitles">Type:</span><br></br>
                     <select name="type" onChange={event=>this.handleChange("type",event)}>
                     <option value="">Any</option>
                     <option value="Cat">Cat</option>
                     <option value="Dog">Dog</option>
                     </select>
-                    </li>
-                <li>Breed: <select name="breed" onChange={event=>this.handleChange("breed",event)}>
+                    </li><br></br>
+                <li><span className="searchtitles">Breed(select up to 3):</span><br></br> <select name="breed" onChange={event=>this.handleChange("breed",event)}>
                         <option value="">Any</option>
                         <option value="Abyssinian">Abyssinian</option>
                         <option value="Aussiedoodle">Aussiedoodle</option>
@@ -151,7 +158,7 @@ export class Search extends React.Component{
                         <option value="Sphynx">Sphynx</option>
                         <option value="Tabby">Tabby</option>
                         <option value="Tuxedo">Tuxedo</option>
-                    </select>
+                    </select><br></br>
                     <select name="breed2"onChange={event=>this.handleChange("breed2",event)}>
                         <option value="">Any</option>
                         <option value="Abyssinian">Abyssinian</option>
@@ -181,7 +188,8 @@ export class Search extends React.Component{
                         <option value="Siamese">Siamese</option>
                         <option value="Sphynx">Sphynx</option>
                         <option value="Tabby">Tabby</option>
-                        <option value="Tuxedo">Tuxedo</option>                    </select>
+                        <option value="Tuxedo">Tuxedo</option>                    
+                        </select><br></br>
                     <select name="breed3" onChange={event=>this.handleChange("breed3",event)}>
                         <option value="">Any</option>
                         <option value="Abyssinian">Abyssinian</option>
@@ -213,9 +221,9 @@ export class Search extends React.Component{
                         <option value="Tabby">Tabby</option>
                         <option value="Tuxedo">Tuxedo</option>
                     </select>
-                </li>
+                </li><br></br>
                 <li>
-                    Gets Along:
+                <span className="searchtitles">Gets Along:</span><br></br>
                     <select name="gets_along"onChange={event=>this.handleChange("gets_along",event)}>
                     <option value="">Any</option>
                     <option value="Dogs">Dogs</option>
@@ -225,8 +233,8 @@ export class Search extends React.Component{
                     <option value="AllAnimalKids">All Animals and Children</option>
                     <option value="None">none</option>
                     </select>
-                </li>
-                <li>Sort By:
+                </li><br></br>
+                <li><span className="searchtitles">Sort By:</span><br></br>
                     <select name="sortby"onChange={event=>this.handleChange("sortby",event)}>
                         <option value="">No Sort</option>
                         <option value="name">Name</option>
@@ -245,20 +253,35 @@ export class Search extends React.Component{
                 
                 </div>
                 {this.state.animals &&
-                <div className='row'>
+                <div className='results'>
                     <div className='column'>
-                        {this.state.animals.map(animal=><AnimalCard  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}/>)}
+                        {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
+                        
                     </div>
                 </div>
                     }
                     {this.state.animals.length==0 &&
-                <div className='row'>
+                <div className='results'>
                    <p>Nothing Matched Your Search!</p>
                 </div>
                     }
+
+                    <div className='content'>
+                        {this.state.currentanimalid!==0&&
+                        <AnimalPageSearch key={this.state.currentanimalid} currentanimalid={this.state.currentanimalid}></AnimalPageSearch>
+                        }
+                    </div>
+                    
             </div>
             
         )
+    }
+
+    navigateToAnimal(animalid){
+        this.setState({
+        currentanimalid:animalid
+        })
+        
     }
 
 
