@@ -25,7 +25,6 @@ export class Search extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.state.animals);
         this.updateSearch();
     }
 
@@ -43,21 +42,6 @@ export class Search extends React.Component{
         let gets_along=this.state.gets_along;
         let sortby=this.state.sortby;
         let orderby=this.state.orderby
-        console.log( JSON.stringify({
-            "age":age,
-            "age2":age2,
-            "gender":gender,
-            "type":type,
-            "temperament":temperament,
-            "fee":fee,
-            "fee2":fee2,
-            "breed":breed,
-            "breed2":breed2,
-            "breed3":breed3,
-            "gets_along":gets_along,
-            "sortby":sortby,
-            "orderby":orderby
-        }));
 
 
         fetch("https://animalrescueproject.azurewebsites.net/animals/search", {
@@ -84,8 +68,9 @@ export class Search extends React.Component{
         })
         .then(response=>response.json())
         .then(animalsArray=>this.setState({animals:animalsArray}));
-        console.log(this.state.animals);
     }
+
+  
 
     handleChange(fieldName, event){
         this.setState({
@@ -103,9 +88,9 @@ export class Search extends React.Component{
                 <div>
                 <ul>
                 <li>Age Range: 
-                <input value={this.state.age} onChange={event => this.handleChange("age", event)}></input><br></br> 
+                <input type="number" value={this.state.age} onChange={event => this.handleChange("age", event)}></input><br></br> 
                 to </li><li>
-                <input value={this.state.age2} onChange={event => this.handleChange("age2", event)}></input>
+                <input type="number" value={this.state.age2} onChange={event => this.handleChange("age2", event)}></input>
                 </li>
                 <li>Gender:
                 <select name="gender"onChange={event=>this.handleChange("gender", event)}>
@@ -124,10 +109,10 @@ export class Search extends React.Component{
                 </select>
                 </li>
                 <li>Fee Range:
-                <input value={this.state.fee} onChange={event =>this.handleChange("fee",event)}></input><br></br>
+                <input type="number" value={this.state.fee} onChange={event =>this.handleChange("fee",event)}></input><br></br>
                 to
                 </li><li>
-                <input value={this.state.fee2} onChange={event=>this.handleChange("fee2",event)}></input>
+                <input type="number" value={this.state.fee2} onChange={event=>this.handleChange("fee2",event)}></input>
                 </li>
                 <li>Type:
                     <select name="type" onChange={event=>this.handleChange("type",event)}>
@@ -137,13 +122,96 @@ export class Search extends React.Component{
                     </select>
                     </li>
                 <li>Breed: <select name="breed" onChange={event=>this.handleChange("breed",event)}>
-                    <option value="">Any</option>
+                        <option value="">Any</option>
+                        <option value="Abyssinian">Abyssinian</option>
+                        <option value="Aussiedoodle">Aussiedoodle</option>
+                        <option value="Beagle">Beagle</option>
+                        <option value="Bombay">Bombay</option>
+                        <option value="Bulldog">Bulldog</option>
+                        <option value="Calico">Calico</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Dalmatian">Dalmatian</option>
+                        <option value="Feist">Feist</option>
+                        <option value="Greyhound">Greyhound</option>
+                        <option value="Havana">Havana</option>
+                        <option value="Hound">Hound</option>
+                        <option value="Husky">Husky</option>
+                        <option value="Jindo">Jindo</option>
+                        <option value="Labrador">Labrador</option>
+                        <option value="Manx">Manx</option>
+                        <option value="Mastiff">Mastiff</option>
+                        <option value="Mix">Mix</option>
+                        <option value="Persian">Persian</option>
+                        <option value="Ocicat">Ocicat</option>
+                        <option value="Other">Other</option>
+                        <option value="Ragdoll">Ragdoll</option>
+                        <option value="Rottweiler">Rottweiler</option>
+                        <option value="Shepherd">Shepherd</option>
+                        <option value="Siamese">Siamese</option>
+                        <option value="Sphynx">Sphynx</option>
+                        <option value="Tabby">Tabby</option>
+                        <option value="Tuxedo">Tuxedo</option>
                     </select>
                     <select name="breed2"onChange={event=>this.handleChange("breed2",event)}>
-                    <option value="">Any</option>
-                    </select>
+                        <option value="">Any</option>
+                        <option value="Abyssinian">Abyssinian</option>
+                        <option value="Aussiedoodle">Aussiedoodle</option>
+                        <option value="Beagle">Beagle</option>
+                        <option value="Bombay">Bombay</option>
+                        <option value="Bulldog">Bulldog</option>
+                        <option value="Calico">Calico</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Dalmatian">Dalmatian</option>
+                        <option value="Feist">Feist</option>
+                        <option value="Greyhound">Greyhound</option>
+                        <option value="Havana">Havana</option>
+                        <option value="Hound">Hound</option>
+                        <option value="Husky">Husky</option>
+                        <option value="Jindo">Jindo</option>
+                        <option value="Labrador">Labrador</option>
+                        <option value="Manx">Manx</option>
+                        <option value="Mastiff">Mastiff</option>
+                        <option value="Mix">Mix</option>
+                        <option value="Persian">Persian</option>
+                        <option value="Ocicat">Ocicat</option>
+                        <option value="Other">Other</option>
+                        <option value="Ragdoll">Ragdoll</option>
+                        <option value="Rottweiler">Rottweiler</option>
+                        <option value="Shepherd">Shepherd</option>
+                        <option value="Siamese">Siamese</option>
+                        <option value="Sphynx">Sphynx</option>
+                        <option value="Tabby">Tabby</option>
+                        <option value="Tuxedo">Tuxedo</option>                    </select>
                     <select name="breed3" onChange={event=>this.handleChange("breed3",event)}>
-                    <option value="">Any</option>
+                        <option value="">Any</option>
+                        <option value="Abyssinian">Abyssinian</option>
+                        <option value="Aussiedoodle">Aussiedoodle</option>
+                        <option value="Beagle">Beagle</option>
+                        <option value="Bombay">Bombay</option>
+                        <option value="Bulldog">Bulldog</option>
+                        <option value="Calico">Calico</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Dalmatian">Dalmatian</option>
+                        <option value="Feist">Feist</option>
+                        <option value="Greyhound">Greyhound</option>
+                        <option value="Havana">Havana</option>
+                        <option value="Hound">Hound</option>
+                        <option value="Husky">Husky</option>
+                        <option value="Jindo">Jindo</option>
+                        <option value="Labrador">Labrador</option>
+                        <option value="Manx">Manx</option>
+                        <option value="Mastiff">Mastiff</option>
+                        <option value="Mix">Mix</option>
+                        <option value="Persian">Persian</option>
+                        <option value="Ocicat">Ocicat</option>
+                        <option value="Other">Other</option>
+                        <option value="Ragdoll">Ragdoll</option>
+                        <option value="Rottweiler">Rottweiler</option>
+                        <option value="Shepherd">Shepherd</option>
+                        <option value="Siamese">Siamese</option>
+                        <option value="Sphynx">Sphynx</option>
+                        <option value="Tabby">Tabby</option>
+                        <option value="Tuxedo">Tuxedo</option>
                     </select>
                 </li>
                 <li>
@@ -176,11 +244,16 @@ export class Search extends React.Component{
                 </ul>
                 
                 </div>
-                {this.state.animals.length>0 &&
+                {this.state.animals &&
                 <div className='row'>
                     <div className='column'>
                         {this.state.animals.map(animal=><AnimalCard  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}/>)}
                     </div>
+                </div>
+                    }
+                    {this.state.animals.length==0 &&
+                <div className='row'>
+                   <p>Nothing Matched Your Search!</p>
                 </div>
                     }
             </div>
