@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
+import { LoginUser } from './pages/LoginUser';
 
 
 
@@ -20,11 +21,16 @@ root.render(
   <React.StrictMode>
     <HashRouter>
       <div>
+        <div>
         <Navbar></Navbar>
+        </div>
+        <div>
         <Routes>
+        <Route path="/" element={<Home/>}/>
           <Route path="/Search" element={<Search/>}/>
-          <Route path="/" element={<Home/>}/>
+          <Route path="/Login" element={<LoginUser/>}/>
         </Routes>
+        </div>
       </div>
     </HashRouter>
   </React.StrictMode>
