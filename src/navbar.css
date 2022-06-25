@@ -14,7 +14,17 @@
     color:aqua;
     background-color: black;
     font-size:1.3em;
-    box-shadow:1px 1px 4px aqua;
+    box-shadow:-2px -2px 4px aqua,2px 2px 4px gray,-2px 2px 4px gray, 2px -2px 4px aqua;
+    margin:5px;
+}
+.loginbutton:hover{
+color:lightcoral;
+}
+.loginbutton:active{
+    color:lightcoral;
+    background-color:rgb(55, 50, 50);
+    box-shadow:none;
+    box-shadow:-2px -2px 4px aqua,2px 2px 4px aqua,-2px 2px 4px aqua, 2px -2px 4px aqua;
 }
 .link{
     padding: 10px; 
