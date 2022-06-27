@@ -2,16 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-import{Navbar} from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
-import {
-  Route,
-  Routes,
-  HashRouter
-} from "react-router-dom";
-import {Home} from './pages/Home';
-import {Search} from './pages/Search';
-import { UserProfile } from './pages/ProfileUser';
+
+import App from './App';
 
 
 
@@ -19,16 +12,7 @@ import { UserProfile } from './pages/ProfileUser';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <div>
-        <Navbar></Navbar>
-        <Routes>
-          <Route path="/Search" element={<Search/>}/>
-          <Route path="/UserProfile" element={<UserProfile/>}/>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
-      </div>
-    </HashRouter>
+    <App/>
   </React.StrictMode>
 );
 
