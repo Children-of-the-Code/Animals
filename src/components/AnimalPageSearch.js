@@ -30,12 +30,7 @@ export class AnimalPageSearch extends React.Component{
         }
         console.log(this.state.inquiryArray);
        
-        if(this.state.inquiryArray[0].includes(this.props.currentAnimal)){
-            console.log(true);
-            this.setState({
-                inquiry:true
-            })
-        }
+        
         console.log(this.state.inquiry)
         
     }
@@ -58,7 +53,7 @@ export class AnimalPageSearch extends React.Component{
                 <p>{!this.props.userid&&
                     <Link className="loginbutton" to="/Login">Log in to submit an adoption inquiry</Link>               
                     }
-                    {!this.state.inquiry&&
+                    {this.props.userid&&
                     <button type="button" onClick={this.addinquiry} className="loginbutton">Apply to adopt this animal!</button>}
                 </p>
                 </div>
