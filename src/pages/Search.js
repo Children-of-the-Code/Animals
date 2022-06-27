@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AnimalCardSearch } from '../components/AnimalCardSearch';
-import '../search.css';
+
 import { AnimalPageSearch } from '../components/AnimalPageSearch';
 
 
@@ -269,7 +269,7 @@ export class Search extends React.Component{
 
                     <div className='content'>
                         {this.state.currentanimalid!==0&&
-                        <AnimalPageSearch key={this.state.currentanimalid} currentanimalid={this.state.currentanimalid}></AnimalPageSearch>
+                        <AnimalPageSearch key={this.state.currentanimalid} currentanimalid={this.state.currentanimalid} userid={this.props.userid}></AnimalPageSearch>
                         }
                     </div>
                     
