@@ -8,6 +8,7 @@ export class Navbar extends React.Component{
         return(
             <div>
                 <Link to="/Search">Search</Link>
+                <Link to="/AddAnimal">Add Animal</Link>
                 <Link to="/">Home</Link>
             </div>
         )

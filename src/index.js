@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
+import { AddAnimal } from './pages/AddAnimal';
 
 
 
@@ -23,6 +24,7 @@ root.render(
         <Navbar></Navbar>
         <Routes>
           <Route path="/Search" element={<Search/>}/>
+          <Route path="/AddAnimal" element={<AddAnimal/>}/>
           <Route path="/" element={<Home/>}/>
         </Routes>
       </div>
