@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
 import{Navbar} from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
 import {
@@ -12,6 +11,7 @@ import {
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
 import { LoginUser } from './pages/LoginUser';
+import App from './App';
 
 
 
@@ -19,20 +19,7 @@ import { LoginUser } from './pages/LoginUser';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <div>
-        <div>
-        <Navbar></Navbar>
-        </div>
-        <div>
-        <Routes>
-        <Route path="/" element={<Home/>}/>
-          <Route path="/Search" element={<Search/>}/>
-          <Route path="/Login" element={<LoginUser/>}/>
-        </Routes>
-        </div>
-      </div>
-    </HashRouter>
+    <App/>
   </React.StrictMode>
 );
 

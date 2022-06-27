@@ -89,6 +89,7 @@ export class Search extends React.Component{
         return(
             <div className="flex-box">
                 <div className="search">
+                    <div className="searchfixed">
                 <ul>
                 <li><span className="searchtitles">Age Range: </span><br></br>
                 <input type="number" value={this.state.age} onChange={event => this.handleChange("age", event)}></input><br></br> 
@@ -250,6 +251,7 @@ export class Search extends React.Component{
                 </li>  
                 
                 </ul>
+                </div>
                 
                 </div>
                 {this.state.animals &&

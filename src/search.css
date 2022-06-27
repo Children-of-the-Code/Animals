@@ -1,14 +1,31 @@
 body{
-    width:100%
+    width:100%;
+    background-color: rgb(241, 229, 172);
 }
 .flex-box{
   display:flex;
+  margin-top:50px;
 }
 .search{
     flex:1;
   }
+ ul{
+  position:-webkit-sticky;
+  position:sticky;
+  top: 0;
+  align-self: flex-start;
+  border-right:2px dotted black;
+  border-bottom: 2px double grey;
+  display:inline-block;
+  padding-right: 10px;
+  padding-bottom:10px;
+  border-radius:15px;
+  box-shadow:-2px -2px 4px rgb(176, 172, 172);
+  margin-left:5px;
+  
+ }
 .results{
-  border-left:2px dotted black;
+
   flex:2;
   margin-left: 10px;
   padding-left: 10px;
