@@ -66,6 +66,7 @@ export class LoginUser extends React.Component{
         this.setState({
             loggedin:true
         }) 
+        this.componentDidMount();
     }
 
 

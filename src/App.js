@@ -38,7 +38,6 @@ class App extends React.Component {
     console.log(this.state.userid);
     console.log(this.state.userrole);
   }
-
   
   render(){
   return (
@@ -52,7 +51,7 @@ class App extends React.Component {
         <Routes>
         <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
           <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/Login" element={<LoginUser loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          <Route path="/Login"  element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
         </Routes>
         </div>
       </div>

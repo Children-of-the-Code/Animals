@@ -30,7 +30,7 @@ export class AnimalPageSearch extends React.Component{
         }
         console.log(this.state.inquiryArray);
        
-        if(this.state.inquiryArray[0].includes(this.props.currentAnimal)){
+        if(this.state.inquiryArray.includes(this.props.currentAnimal)){
             console.log(true);
             this.setState({
                 inquiry:true
@@ -38,6 +38,16 @@ export class AnimalPageSearch extends React.Component{
         }
         console.log(this.state.inquiry)
         
+    }
+    renderSwitch(userid){
+        switch(userid){
+            case 'true':
+                ;
+                default:
+            return <Link className="loginbutton" to="/Login">Log in to submit an adoption inquiry</Link>;
+            
+        }
+
     }
     
 
@@ -55,9 +65,9 @@ export class AnimalPageSearch extends React.Component{
                 <p>Description: {this.state.currentAnimal.description}</p>
                 <p>Gets along with: {this.state.currentAnimal.gets_along}</p>
                 <p>Adoption Fee: {this.state.currentAnimal.fee}</p>
-                <p>{!this.props.userid&&
-                    <Link className="loginbutton" to="/Login">Log in to submit an adoption inquiry</Link>               
-                    }
+                <p>{this.renderSwitch(this.props.loggedin)}
+                                   
+                    
                     {!this.state.inquiry&&
                     <button type="button" onClick={this.addinquiry} className="loginbutton">Apply to adopt this animal!</button>}
                 </p>
