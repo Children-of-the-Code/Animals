@@ -25,6 +25,7 @@ export class Navbar extends React.Component{
     render(){
         return(
 
+
             <div className="navbar">   
                 <Link className="link" to="/">Home</Link>  
                 <Link className="link" to="/Search">Search</Link>

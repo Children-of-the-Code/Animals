@@ -34,9 +34,6 @@ class App extends React.Component {
   handleRole(role){
     this.setState({userrole:role},console.log());
   }
- 
-  
-
   
   render(){
   return (
@@ -54,6 +51,7 @@ class App extends React.Component {
           <Route path="/AddAnimal" element={<AddAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           }
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+
         </Routes>
         </div>
       </div>
