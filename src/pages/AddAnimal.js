@@ -125,19 +125,13 @@ export class AddAnimal extends React.Component {
         // and set state to that value
         this.setState({
             [parameter]: event.target.value
-        }, console.log(this.state.name), this.componentDidMount());
+        } );
     }
-    componentDidMount(){
-        
-    }
+    
 
     submit(event){
         event.preventDefault();
         console.log(this.state.name)
-        console.log(this.state.description)
-        console.log(this.state.age)
-        console.log(this.state.gender)
-        console.log(this.state.temperament)
         let name = this.state.name;
         let description = this.state.description;
         let age = this.state.age;
