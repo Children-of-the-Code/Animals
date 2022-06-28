@@ -14,13 +14,14 @@ export class RegistrationUser extends React.Component{
             phone:0,
             username:"",
             password:"",
-            role:""
+            password2:"",
+            message:""
         }
     }
 
     handleChange(fieldname, event){
         this.setState({
-            [fieldName]:event.target.value
+            [fieldname]:event.target.value
         });
     }
 
@@ -35,28 +36,38 @@ export class RegistrationUser extends React.Component{
         let phone=this.state.phone;
         let username=this.state.username;
         let password=this.state.password;
-        let role=this.state.role;
+        let password2=this.state.password2;
         event.preventDefault();
-        fetch("https://animalrescueproject.azurewebsites.net/users/registration", {
-            method:"POST",
-            mode:"cors",
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "fname":this.state.fname,
-                "lname":this.state.lname,
-                "email":this.state.email,
-                "address":this.state.address,
-                "city":this.state.city,
-                "state":this.state.state,
-                "zip":this.state.zip,
-                "phone":this.state.phone,
-                "username":this.state.username,
-                "password":this.state.password,
-                "role":this.state.role
+        if(password == password2){
+
+        
+            fetch("https://animalrescueproject.azurewebsites.net/users/add", {
+                method:"POST",
+                mode:"cors",
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "first_name":this.state.fname,
+                    "last_name":this.state.lname,
+                    "email":this.state.email,
+                    "street_address":this.state.address,
+                    "city":this.state.city,
+                    "state":this.state.state,
+                    "zip":this.state.zip,
+                    "phone":this.state.phone,
+                    "username":this.state.username,
+                    "password":this.state.password
+                })
             })
-        })
+            this.setState({
+                message:"Successful Registration! Please Click Login at the top to Log in!"
+            })
+        }else{
+            this.setState({
+                message:"Your passwords must match!"
+            })
+        }
     }
 
     render(){
@@ -65,45 +76,43 @@ export class RegistrationUser extends React.Component{
                 <div>
                     <h1>User Registration</h1>
                 </div>
-                <form>
-                    <label className="label">First Name</label><br></br>
-                    <input onChange={event => this.handleChange("fname", event)} value={this.state.fname} type="text" />
+                <form onSubmit={this.handleSubmit}>
+                    <label className="label">First Name:</label>
+                    <input onChange={event => this.handleChange("fname", event)} type="text" required/><br></br>
 
-                    <label className="label">Last Name</label><br></br>
-                    <input onChange={event => this.handleChange("lname", event)} value={this.state.lname} type="text" />
+                    <label className="label">Last Name:</label>
+                    <input onChange={event => this.handleChange("lname", event)} type="text" required/><br></br>
 
-                    <label className="label">Email</label><br></br>
-                    <input onChange={event => this.handleChange("email", event)} value={this.state.email} type="email" />
+                    <label className="label">Email:</label>
+                    <input onChange={event => this.handleChange("email", event)}  type="email" required/><br></br>
 
-                    <label className="label">Street Address</label><br></br>
-                    <input onChange={event => this.handleChange("address", event)} value={this.state.address} type="text" />\
+                    <label className="label">Street Address:</label>
+                    <input onChange={event => this.handleChange("address", event)} type="text" required/><br></br>
 
-                    <label className="label">City</label><br></br>
-                    <input onChange={event => this.handleChange("city", event)} value={this.state.city} type="text" />
+                    <label className="label">City:</label>
+                    <input onChange={event => this.handleChange("city", event)} type="text" required/><br></br>
 
-                    <label className="label">State</label><br></br>
-                    <input onChange={event => this.handleChange("state", event)} value={this.state.state} type="text" />
+                    <label className="label">State:</label>
+                    <input onChange={event => this.handleChange("state", event)} type="text" required/><br></br>
 
-                    <label className="label">Zip Code</label><br></br>
-                    <input onChange={event => this.handleChange("zip", event)} value={this.state.zip} type="number" />
+                    <label className="label">Zip Code:</label>
+                    <input onChange={event => this.handleChange("zip", event)} type="number" required/><br></br>
 
-                    <label className="label">Phone Number</label><br></br>
-                    <input onChange={event => this.handleChange("phone", event)} value={this.state.phone} type="number" />
+                    <label className="label">Phone Number:</label>
+                    <input onChange={event => this.handleChange("phone", event)} type="number" required/><br></br>
 
-                    <label className="label">Username</label><br></br>
-                    <input onChange={event => this.handleChange("username", event)} value={this.state.username} type="text" />
+                    <label className="label">Username:</label>
+                    <input onChange={event => this.handleChange("username", event)} type="text" required/><br></br>
 
-                    <label className="label">Password</label><br></br>
-                    <input onChange={event => this.handleChange("password", event)} value={this.state.password} type="text" />
+                    <label className="label">Password:</label>
+                    <input onChange={event => this.handleChange("password", event)} type="password" required/><br></br>
 
-                    <label className="label">User Role</label><br></br>
-                    <select name="role" onChange={event => this.handleChange("role", event)}>
-                        <option value="User">User</option>
-                        <option value="Admin">Admin</option>
-                    </select>
+                    <label className="label">Check Password:</label>
+                    <input onChange={event => this.handleChange("password2", event)} type="password" required/><br></br>
 
-                    <button onClick={handleSubmit} type="submit">Submit User</button>
+                    <button type="submit">Submit User</button>
                 </form>
+                <p>{this.state.message}</p>
             </div>
         );
     }
