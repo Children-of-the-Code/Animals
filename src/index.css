@@ -80,7 +80,8 @@ list-style:none;
 }
 .content{
 flex:2;
-margin-left:10px;
+margin-left: 10px;
+padding-left: 10px;
 }
 .animalnames{
 font-weight:bold;

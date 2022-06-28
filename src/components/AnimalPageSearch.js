@@ -77,6 +77,7 @@ export class AnimalPageSearch extends React.Component{
         return(
             <div>
                 {this.state.currentAnimal&&
+                
                 <div className="contentcard">
                 <p>Name: {this.state.currentAnimal.name}</p>
                 <p>Type: {this.state.currentAnimal.type}</p>
