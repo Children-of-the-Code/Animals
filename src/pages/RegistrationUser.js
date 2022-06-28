@@ -56,7 +56,7 @@ export class RegistrationUser extends React.Component{
                 "password":this.state.password,
                 "role":this.state.role
             })
-        }).then(response=>response.json())
+        })
     }
 
     render(){
