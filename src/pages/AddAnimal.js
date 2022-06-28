@@ -3,19 +3,18 @@ export class AddAnimal extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            "name":"",
-            "description": "",
-            "age": 0,
-            "gender": "",
-            "date_added": "",
-            "temperament": "",
-            "fee": 0.0,
-            "type": "",
-            "breed": "",
-            "gets_along": "",
-            "url": "",
-            "sale": 0.0
-
+            name:"",
+            description: "",
+            age: 0,
+            gender: "",
+            date_added: "",
+            temperament: "",
+            fee: 0.0,
+            type: "",
+            breed: "",
+            gets_along: "",
+            url: "",
+            sale: 0.0,
         }
     }
     render(){
@@ -107,7 +106,7 @@ export class AddAnimal extends React.Component {
                 <li><span className="AddAnimalText">Enter sale: </span><br></br>
                 <input type="number" value={this.state.sale} onChange={event => this.updateInputValue("sale", event)}></input><br></br>
                 </li>
-                <button onClick = {event=>this.submit(event)}>Submit</button>
+                <button onClick = {event=>this.submit(event)}>Add Animal</button>
             </div>
         )
     }
@@ -116,12 +115,10 @@ export class AddAnimal extends React.Component {
         // and set state to that value
         this.setState({
             [parameter]: event.target.value
-        }, () =>{
-            this.submit();
-        })
+        });
     }
 
-    submit(event){
+    submit(){
         let name = this.state.name;
         let description = this.state.description;
         let age = this.state.age;
@@ -133,7 +130,8 @@ export class AddAnimal extends React.Component {
         let gets_along = this.state.gets_along;
         let url = this.state.url;
         let sale = this.state.sale;
-        fetch("https://animalrescueproject.azurewebsites.net/add", {
+    
+        fetch("https://animalrescueproject.azurewebsites.net/animals/add", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -146,7 +144,7 @@ export class AddAnimal extends React.Component {
                 "description": description,
                 "age": age,
                 "gender": gender,
-                "date_added": "{{currentdate}}",
+                "date_added": "",
                 "temperament": temperament,
                 "fee": fee,
                 "type": type,
@@ -155,8 +153,6 @@ export class AddAnimal extends React.Component {
                 "url": url,
                 "sale": sale
             })
-        });
-    }
-
-
+        })
+}
 }
