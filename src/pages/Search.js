@@ -261,7 +261,7 @@ export class Search extends React.Component{
                     </div>
                 </div>
                     }
-                    {this.state.animals.length==0 &&
+                    {this.state.animals.length===0 &&
                 <div className='results'>
                    <p>Nothing Matched Your Search!</p>
                 </div>
@@ -269,7 +269,7 @@ export class Search extends React.Component{
 
                     <div className='content'>
                         {this.state.currentanimalid!==0&&
-                        <AnimalPageSearch key={this.state.currentanimalid} loggedin={this.state.loggedin} currentanimalid={this.state.currentanimalid} userid={this.props.userid}></AnimalPageSearch>
+                        <AnimalPageSearch key={this.state.currentanimalid} loggedin={this.props.loggedin} currentanimalid={this.state.currentanimalid} userid={this.props.userid}></AnimalPageSearch>
                         }
                     </div>
                     
