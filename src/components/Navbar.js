@@ -22,9 +22,9 @@ export class Navbar extends React.Component{
     render(){
         return(
             <div className="navbar">
-                
-                <Link className="link" to="/Search">Search</Link>
                 <Link className="link" to="/">Home</Link>
+                <Link className="link" to="/Search">Search</Link>
+                
                 {!this.props.loggedin&&
                 <Link className="loginbutton" to="/Login">Login</Link>}
                 {this.props.loggedin&&
