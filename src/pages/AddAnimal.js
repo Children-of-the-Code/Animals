@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Moment from 'moment';
 export class AddAnimal extends React.Component {
     constructor(props){
         super(props);
@@ -14,32 +15,36 @@ export class AddAnimal extends React.Component {
             breed: "",
             gets_along: "",
             url: "",
-            sale: 0.0,
+            sale: 0.0
         }
     }
     render(){
         return(
             <div>
                 <h3 className='AddAnimalHeader'>Add your animal here:</h3>
+                <form onSubmit= {event=>this.submit(event)}>
+                <ul>
                 <li><span className="AddAnimalText">Enter name: </span><br></br>
-                <input type="text" value={this.state.name} onChange={event => this.updateInputValue("name", event)}></input><br></br>
+                <input type="text" value={this.state.name} onChange={event => this.updateInputValue("name", event)}required></input><br></br>
                 </li>
                 <li><span className="AddAnimalText">Enter description: </span><br></br>
-                <input type="text" value={this.state.description} onChange={event => this.updateInputValue("description", event)}></input><br></br>
+                <input type="text" value={this.state.description} onChange={event => this.updateInputValue("description", event)}required></input><br></br>
                 </li>
                 <li><span className="AddAnimalText">Enter age: </span><br></br>
-                <input type="number" value={this.state.age} onChange={event => this.updateInputValue("age", event)}></input><br></br>
+                <input type="number" value={this.state.age} onChange={event => this.updateInputValue("age", event)}required></input><br></br>
                 </li>
                 <li>
                 <span className="AddAnimalText">Select gender: </span><br></br>
-                <select name="gender"onChange={event=>this.updateInputValue("gender", event)}>
+                <select name="gender"onChange={event=>this.updateInputValue("gender", event)}required>
+                    <option value="">Select One</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select> 
                 </li>
                 <li>
                 <span className="AddAnimalText">Select temperament: </span><br></br>
-                <select name="temperament"onChange={event=>this.updateInputValue("temperament", event)}>
+                <select name="temperament"onChange={event=>this.updateInputValue("temperament", event)}required>
+                <option value="">Select One</option>
                     <option value="Mild">Mild</option>
                     <option value="Medium">Medium</option>
                     <option value="Hot">Hot</option>
@@ -47,18 +52,20 @@ export class AddAnimal extends React.Component {
                 </select> 
                 </li>
                 <li><span className="AddAnimalText">Enter fee: </span><br></br>
-                <input type="number" value={this.state.fee} onChange={event => this.updateInputValue("fee", event)}></input><br></br>
+                <input type="number" value={this.state.fee} onChange={event => this.updateInputValue("fee", event)}required></input><br></br>
                 </li>
                 <li>
                 <span className="AddAnimalText">Select type: </span><br></br>
-                <select name="type"onChange={event=>this.updateInputValue("type", event)}>
+                <select name="type"onChange={event=>this.updateInputValue("type", event)}required>
+                    <option value="">Select One</option>
                     <option value="Cat">Cat</option>
                     <option value="Dog">Dog</option>
                 </select> 
                 </li>
                 <li>
                 <span className="AddAnimalText">Select breed: </span><br></br>
-                <select name="breed"onChange={event=>this.updateInputValue("breed", event)}>
+                <select name="breed"onChange={event=>this.updateInputValue("breed", event)}required>
+                    <option value="">Select one</option>
                     <option value="Abyssinian">Abyssinian</option>
                     <option value="Aussiedoodle">Aussiedoodle</option>
                     <option value="Beagle">Beagle</option>
@@ -91,7 +98,8 @@ export class AddAnimal extends React.Component {
                 </li>
                 <li>
                 <span className="AddAnimalText">Select who gets along with: </span><br></br>
-                <select name="gets_along"onChange={event=>this.updateInputValue("gets_along", event)}>
+                <select name="gets_along"onChange={event=>this.updateInputValue("gets_along", event)} required>
+                    <option value="">Select One</option>
                     <option value="Dogs">Dogs</option>
                     <option value="Cats">Cats</option>
                     <option value="Kids">Kids</option>
@@ -106,7 +114,9 @@ export class AddAnimal extends React.Component {
                 <li><span className="AddAnimalText">Enter sale: </span><br></br>
                 <input type="number" value={this.state.sale} onChange={event => this.updateInputValue("sale", event)}></input><br></br>
                 </li>
-                <button onClick = {event=>this.submit(event)}>Add Animal</button>
+                </ul>
+                <button type="submit">Add Animal</button>
+                </form>
             </div>
         )
     }
@@ -115,14 +125,24 @@ export class AddAnimal extends React.Component {
         // and set state to that value
         this.setState({
             [parameter]: event.target.value
-        });
+        }, console.log(this.state.name), this.componentDidMount());
+    }
+    componentDidMount(){
+        
     }
 
-    submit(){
+    submit(event){
+        event.preventDefault();
+        console.log(this.state.name)
+        console.log(this.state.description)
+        console.log(this.state.age)
+        console.log(this.state.gender)
+        console.log(this.state.temperament)
         let name = this.state.name;
         let description = this.state.description;
         let age = this.state.age;
         let gender = this.state.gender;
+        let date=Moment();
         let temperament = this.state.temperament;
         let fee = this.state.fee;
         let type = this.state.type;
@@ -130,29 +150,36 @@ export class AddAnimal extends React.Component {
         let gets_along = this.state.gets_along;
         let url = this.state.url;
         let sale = this.state.sale;
+        console.log(date);
+        console.log(this.state.fee)
+        console.log(this.state.type)
+        console.log(this.state.gets_along)
+        console.log(this.state.url)
+        console.log(this.state.sale)
     
         fetch("https://animalrescueproject.azurewebsites.net/animals/add", {
             method: "POST",
             mode: "cors",
             headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
               },
             body: JSON.stringify(
                 {
-                "name":name,
-                "description": description,
-                "age": age,
-                "gender": gender,
-                "date_added": "",
-                "temperament": temperament,
-                "fee": fee,
-                "type": type,
-                "breed": breed,
-                "gets_along": gets_along,
-                "url": url,
-                "sale": sale
+                    "name": name,
+                    "description": description,
+                    "age": age,
+                    "gender": gender,
+                    "date_added": date,
+                    "temperament": temperament,
+                    "fee": fee,
+                    "type": type,
+                    "breed": breed,
+                    "gets_along": gets_along,
+                    "url": url,
+                    "sale": sale,
+                    "adopted": false
             })
         })
-}
+    }
 }
