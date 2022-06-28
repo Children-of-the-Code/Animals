@@ -57,6 +57,7 @@ export class AnimalPageSearch extends React.Component{
         }
     }
     addinquiry(){
+
         
         fetch("https://animalrescueproject.azurewebsites.net/inquiries/submit",{
             method: "POST",
@@ -87,6 +88,7 @@ export class AnimalPageSearch extends React.Component{
                 <p>Temperament: {this.state.currentAnimal.temperament}</p>
                 <p>Description: {this.state.currentAnimal.description}</p>
                 <p>Gets along with: {this.state.currentAnimal.gets_along}</p>
+
                 {this.state.currentAnimal.sale>0&&
                 <span className="sale">
                     <p>Old Adoption Fee: ${parseFloat((this.state.currentAnimal.fee)/((100-this.state.currentAnimal.sale)/100).toFixed(2)).toFixed(2)}</p>
@@ -103,6 +105,7 @@ export class AnimalPageSearch extends React.Component{
 
                 <p>{this.buttoncheck(this.props.loggedin, this.state.inquiry)}
                     
+
                 </p>
                 <p>{this.text}</p>
                 </div>

@@ -10,6 +10,7 @@ import {
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
 import { LoginUser } from './pages/LoginUser';
+import {AddAnimal} from './pages/AddAnimal';
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -23,20 +24,15 @@ class App extends React.Component {
     }
   }
   handleLogin(loggedins){
-    this.setState({loggedin:loggedins},);
+    this.setState({loggedin:loggedins},console.log());
  
   }
   handleId(id){
-    this.setState({userid:id});
+    this.setState({userid:id},console.log());
   
   }
   handleRole(role){
-    this.setState({userrole:role});
-  }
-  componentDidUpdate(){
-    console.log(this.state.loggedin);
-    console.log(this.state.userid);
-    console.log(this.state.userrole);
+    this.setState({userrole:role},console.log());
   }
   
   render(){
@@ -45,13 +41,17 @@ class App extends React.Component {
       <HashRouter>
       <div>
         <div>
-        <Navbar loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></Navbar>
+        <Navbar key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></Navbar>
         </div>
         <div>
         <Routes>
-        <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/Login"  element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+        <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
+          <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
+          {this.state.userrole==="Admin"&&
+          <Route path="/AddAnimal" element={<AddAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          }
+          <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+
         </Routes>
         </div>
       </div>

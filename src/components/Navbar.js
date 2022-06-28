@@ -8,6 +8,7 @@ export class Navbar extends React.Component{
         this.handleLogin=this.handleLogin.bind(this);
         this.handleId=this.handleId.bind(this);
         this.handleRole=this.handleRole.bind(this);
+        
     }
     handleLogin(t){
         this.props.handleLogin(t);
@@ -18,17 +19,26 @@ export class Navbar extends React.Component{
     handleRole(){
         this.props.handleRole("");
     }
+    
+    
 
     render(){
         return(
-            <div className="navbar">
-                <Link className="link" to="/">Home</Link>
+
+
+            <div className="navbar">   
+                <Link className="link" to="/">Home</Link>  
                 <Link className="link" to="/Search">Search</Link>
-                
+                {this.props.role==="Admin"&&
+                <Link key={this.props.userid} className="link" to="/AddAnimal">Add Animal</Link>
+                }
                 {!this.props.loggedin&&
-                <Link className="loginbutton" to="/Login">Login</Link>}
+                <Link className="loginbutton" to="/Login">Login</Link>
+                }
                 {this.props.loggedin&&
-                <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>}
+                <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
+                }
+
             </div>
         )
     }
