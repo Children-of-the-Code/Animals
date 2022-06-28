@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
-import{Navbar} from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
-import {
-  Route,
-  Routes,
-  HashRouter
-} from "react-router-dom";
-import {Home} from './pages/Home';
-import {Search} from './pages/Search';
-import { AddAnimal } from './pages/AddAnimal';
+
+import App from './App';
+
 
 
 
@@ -19,16 +12,7 @@ import { AddAnimal } from './pages/AddAnimal';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <div>
-        <Navbar></Navbar>
-        <Routes>
-          <Route path="/Search" element={<Search/>}/>
-          <Route path="/AddAnimal" element={<AddAnimal/>}/>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
-      </div>
-    </HashRouter>
+    <App/>
   </React.StrictMode>
 );
 
