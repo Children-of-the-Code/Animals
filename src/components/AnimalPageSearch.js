@@ -10,7 +10,8 @@ export class AnimalPageSearch extends React.Component{
             inquiryArray:[],
             inquiry:false,
             text:"",
-            user_id:""
+            user_id:"",
+            salepercent:0
 
         }
     }
@@ -19,7 +20,7 @@ export class AnimalPageSearch extends React.Component{
         if (this.props.currentanimalid){
             fetch("https://animalrescueproject.azurewebsites.net/animals/findbyid/"+this.props.currentanimalid)
             .then(response=>response.json())
-            .then(animal=>{this.setState({currentAnimal:animal}, console.log())})
+            .then(animal=>{this.setState({currentAnimal:animal, salepercent:animal.fee/((100-animal.sale)/100)}, console.log())})
         }
         
         if (this.props.userid&&this.props.currentanimalid){
@@ -86,7 +87,20 @@ export class AnimalPageSearch extends React.Component{
                 <p>Temperament: {this.state.currentAnimal.temperament}</p>
                 <p>Description: {this.state.currentAnimal.description}</p>
                 <p>Gets along with: {this.state.currentAnimal.gets_along}</p>
-                <p>Adoption Fee: {this.state.currentAnimal.fee}</p>
+                {this.state.currentAnimal.sale>0&&
+                <span className="sale">
+                    <p>Old Adoption Fee: ${parseFloat((this.state.currentAnimal.fee)/((100-this.state.currentAnimal.sale)/100).toFixed(2)).toFixed(2)}</p>
+                    
+                    <p>Discount: %{this.state.currentAnimal.sale}</p>
+                    
+                    
+                    <p>Fee With Discount Included: ${this.state.currentAnimal.fee}</p>
+                    
+                </span>}
+                {!this.state.currentAnimal.sale&&
+                <p>Adoption Fee: ${this.state.currentAnimal.fee}</p>
+                }
+
                 <p>{this.buttoncheck(this.props.loggedin, this.state.inquiry)}
                     
                 </p>

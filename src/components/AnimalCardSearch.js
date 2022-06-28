@@ -1,5 +1,5 @@
 import * as React from 'react'
-import "../animalcardsearch.css"
+
 export class AnimalCardSearch extends React.Component{
     constructor(props){
         super(props);
@@ -8,34 +8,34 @@ export class AnimalCardSearch extends React.Component{
     render(){
         return(
             <div className="animallist">
-                <h3>Your pick:</h3>
-                <p><span className="animalnames">Name: {this.props.name}</span>
-                <br></br>
-                Type: {this.props.type}
-                <br></br>
-                Breed: {this.props.breed}
-                <br></br>
-                Age: {this.props.age}
-                <br></br>
-                Gender: {this.props.gender}
-                <br></br>
-                Temperament: {this.props.temperament}
-                <br></br>
-                Gets Along With: {this.props.gets_along}            
-                <br></br>
+                <p><span className="animalnames">Name: {this.props.name}</span></p>
+                
+                <p>Type: {this.props.type}</p>
+                
+                <p>Breed: {this.props.breed}</p>
+                
+                <p>Age: {this.props.age}</p>
+                
+                <p>Gender: {this.props.gender}</p>
+                
+                <p>Temperament: {this.props.temperament}</p>
+                
+                <p>Gets Along With: {this.props.gets_along}</p>         
+                
                 {this.props.sale>0&&
-                <span>
-                    <span>Old Adoption Fee: ${(this.props.fee)/(this.props.sale/100)}</span>
-                    <br></br>
-                    <span>Discount: %{this.props.sale}
-                    </span>
-                    <br></br>
-                    <span>Fee With Discount Included: ${this.props.fee}</span>
-                    <br></br>
+                <span className="sale">
+                    <p>Old Adoption Fee: ${parseFloat((this.props.fee)/((100-this.props.sale)/100).toFixed(2)).toFixed(2)}</p>
+                    
+                    <p>Discount: %{this.props.sale}</p>
+                    
+                    
+                    <p>Fee With Discount Included: ${this.props.fee}</p>
+                    
                 </span>}
-                Adoption Fee: ${this.props.fee}
-                </p>
-                <br></br>
+
+                {!this.props.sale&&
+                <p>Adoption Fee: ${this.props.fee}</p>
+                }
 
             </div>
         )

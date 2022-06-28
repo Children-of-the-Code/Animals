@@ -31,10 +31,11 @@ export class Home extends React.Component{
         .then(animal=>this.setState({animalsSale:animal}), console.log())
     }
   
-    navigateToAnimal(animalid){
+    navigateToAnimal(animalid, animalsale){
             this.setState({
-            currentanimalid:animalid
-        })
+            currentanimalid:animalid,
+            sale:animalsale
+        }, console.log(this.state.sale))
     }  
 
 
@@ -51,20 +52,20 @@ export class Home extends React.Component{
                 <div className='results'>
                     <h3>Sale:</h3>
                     <div className='column'>
-                        {this.state.animalsSale.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} sale={animal.sale} fee={animal.fee}></AnimalCardSearch></div>)}
+                        {this.state.animalsSale.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} sale={animal.sale} fee={animal.fee}></AnimalCardSearch></div>)}
                     </div>
                 </div>
                 <div className='results'>
                     <h3>Last-Chance Love:</h3>
                     <div className='column'>
-                        {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
+                        {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
                     </div>
                 </div>
                 <div className='content'>
-                    <h3>Your pick:</h3>
                     <div>
+                        <h2>Your Pick</h2>
                         {this.state.currentanimalid!==0&&
-                        <AnimalPageSearch key={this.state.currentanimalid} loggedin={this.props.loggedin} currentanimalid={this.state.currentanimalid} userid={this.props.userid}></AnimalPageSearch>
+                        <AnimalPageSearch key={this.state.currentanimalid} loggedin={this.props.loggedin} currentanimalid={this.state.currentanimalid} sale={this.state.sale} userid={this.props.userid}></AnimalPageSearch>
                         }
                         </div>
                     </div>
