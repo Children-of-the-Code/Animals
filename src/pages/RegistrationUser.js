@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import '../register.css';
+
 export class RegistrationUser extends React.Component{
     constructor(props){
         super(props);
@@ -77,38 +79,27 @@ export class RegistrationUser extends React.Component{
                     <h1>User Registration</h1>
                 </div>
                 <form onSubmit={this.handleSubmit}>
-                    <label className="label">First Name:</label>
-                    <input onChange={event => this.handleChange("fname", event)} type="text" required/><br></br>
+                    <input placeholder= "First Name" onChange={event => this.handleChange("fname", event)} type="text" required/><br></br>
 
-                    <label className="label">Last Name:</label>
-                    <input onChange={event => this.handleChange("lname", event)} type="text" required/><br></br>
+                    <input placeholder="Last Name" onChange={event => this.handleChange("lname", event)} type="text" required/><br></br>
 
-                    <label className="label">Email:</label>
-                    <input onChange={event => this.handleChange("email", event)}  type="email" required/><br></br>
+                    <input placeholder='Email' onChange={event => this.handleChange("email", event)}  type="email" required/><br></br>
 
-                    <label className="label">Street Address:</label>
-                    <input onChange={event => this.handleChange("address", event)} type="text" required/><br></br>
+                    <input placeholder='Address' onChange={event => this.handleChange("address", event)} type="text" required/><br></br>
 
-                    <label className="label">City:</label>
-                    <input onChange={event => this.handleChange("city", event)} type="text" required/><br></br>
+                    <input placeholder='City' onChange={event => this.handleChange("city", event)} type="text" required/><br></br>
 
-                    <label className="label">State:</label>
-                    <input onChange={event => this.handleChange("state", event)} type="text" required/><br></br>
+                    <input placeholder='State' onChange={event => this.handleChange("state", event)} type="text" required/><br></br>
 
-                    <label className="label">Zip Code:</label>
-                    <input onChange={event => this.handleChange("zip", event)} type="number" required/><br></br>
+                    <input placeholder='Zip' onChange={event => this.handleChange("zip", event)} type="number" required/><br></br>
 
-                    <label className="label">Phone Number:</label>
-                    <input onChange={event => this.handleChange("phone", event)} type="number" required/><br></br>
+                    <input placeholder='Phone Number' onChange={event => this.handleChange("phone", event)} type="number" required/><br></br>
 
-                    <label className="label">Username:</label>
-                    <input onChange={event => this.handleChange("username", event)} type="text" required/><br></br>
+                    <input placeholder='Username' onChange={event => this.handleChange("username", event)} type="text" required/><br></br>
 
-                    <label className="label">Password:</label>
-                    <input onChange={event => this.handleChange("password", event)} type="password" required/><br></br>
+                    <input placeholder='Password' onChange={event => this.handleChange("password", event)} type="password" required/><br></br>
 
-                    <label className="label">Check Password:</label>
-                    <input onChange={event => this.handleChange("password2", event)} type="password" required/><br></br>
+                    <input placeholder='Check Password' onChange={event => this.handleChange("password2", event)} type="password" required/><br></br>
 
                     <button type="submit">Submit User</button>
                 </form>
