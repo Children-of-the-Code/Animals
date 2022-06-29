@@ -33,8 +33,9 @@ export class Navbar extends React.Component{
                 }
                 {!this.props.loggedin&&
                 <div>
-                 <Link className="loginbutton" to="/Login">Login</Link>
-                <Link className="loginbutton" to="/Login">Login</Link>
+                    <Link className="loginbutton" to="/Login">Login</Link>
+                 <Link className="loginbutton" to="/Registration">Register</Link>
+                
                 </div>
                 }
                 {this.props.loggedin&&
