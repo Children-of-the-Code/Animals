@@ -9,6 +9,11 @@ import {Home} from './pages/Home';
 import {Search} from './pages/Search';
 import { LoginUser } from './pages/LoginUser';
 import { UserProfile } from './pages/ProfileUser';
+import { InquiriesUser } from './pages/InquiriesUser';
+import { InquiriesAdmin } from './pages/InquiriesAdmin';
+import { TransactionsUser } from './pages/TransactionsUser';
+import { TransactionsAdmin } from './pages/TransactionsAdmin';
+
 
 class App extends React.Component {
   constructor(props){
@@ -53,8 +58,11 @@ class App extends React.Component {
         <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
           <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
           <Route path="/Login" element={<LoginUser loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
-          <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/InquiriesUser" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          <Route path="/InquiriesUser" element={<InquiriesUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/InquiriesAdmin" element={<InquiriesAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/TransactionsUser" element={<TransactionsUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
         </Routes>
         </div>
       </div>

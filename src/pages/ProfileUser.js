@@ -101,8 +101,30 @@ export class UserProfile extends React.Component{
       return(
         <div className="container">
           <div className="sidenav">
-            <Link className="view-inquiries-link" to="/UserProfile">View Inquiries</Link>
-            <Link className="view-transactions-link" to="/UserProfile">View Transactions</Link>
+            <p>User role: {this.props.userrole}</p>
+            { this.props.userrole==="User"&&
+              // Role == User ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                //View Inquiries - /InquiriesUser
+                  //List inquiries made by user. Needs: userid
+              <Link className="view-inquiries-link" to="/InquiriesUser">View Inquiries</Link>
+            }
+            { this.props.userrole==="User"&&
+              //View Transactions - /TransactionsUser
+                  //List of transactions made by user. Needs: userid
+              <Link className="view-transactions-link" to="/TransactionsUser">View Transactions</Link>
+
+            }
+            { this.props.userrole==="Admin"&&
+              // Role == Admin ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                //View/Process Inquiries - /InquiriesAdmin
+                  //List of all inquiries. View pending have the option to process.
+              <Link className="view-inquiries-link" to="/InquiriesAdmin">Process Inquiries</Link>
+            }
+            { this.props.userrole==="Admin"&&
+                //View Transactions - /TransactionsAdmin
+                  //List of all transactions
+              <Link className="view-transactions-link" to="/TransactionsAdmin">View Transactions</Link>
+            }
           </div>
           <div className="main">
             <h3>User Profile</h3>
