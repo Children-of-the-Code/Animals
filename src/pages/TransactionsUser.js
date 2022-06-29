@@ -9,6 +9,9 @@ export class TransactionsUser extends React.Component{
       return(
         <div>
           User Transactions Page
+          <div>
+            User ID: {this.props.userid}
+          </div>
         </div>
       )
     }

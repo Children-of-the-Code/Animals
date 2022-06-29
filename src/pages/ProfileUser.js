@@ -101,7 +101,6 @@ export class UserProfile extends React.Component{
       return(
         <div className="container">
           <div className="sidenav">
-            <p>User role: {this.props.userrole}</p>
             { this.props.userrole==="User"&&
               // Role == User ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 //View Inquiries - /InquiriesUser
