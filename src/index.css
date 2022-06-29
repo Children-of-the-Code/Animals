@@ -48,8 +48,9 @@ color:lightcoral;
 
 
 .flex-box{
-display:flex;
-margin-top:50px;
+  display:flex;
+  margin-top:50px;
+  margin-bottom:120px;
 }
 .search{
   flex:1;

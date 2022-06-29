@@ -24,21 +24,22 @@ export class Navbar extends React.Component{
 
     render(){
         return(
-
-
             <div className="navbar">   
                 <Link className="link" to="/">Home</Link>  
                 <Link className="link" to="/Search">Search</Link>
                 {this.props.role==="Admin"&&
-                <Link key={this.props.userid} className="link" to="/AddAnimal">Add Animal</Link>
+                <Link key={this.props.userid} className="link" to="/EditAnimal">Edit Animals</Link>
                 }
                 {!this.props.loggedin&&
+                <div>
                 <Link className="loginbutton" to="/Login">Login</Link>
+                </div>
                 }
                 {this.props.loggedin&&
+                <div>
                 <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
+                </div>
                 }
-
             </div>
         )
     }

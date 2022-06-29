@@ -21,8 +21,9 @@ export class AddAnimal extends React.Component {
     render(){
         return(
             <div>
-                <h3 className='AddAnimalHeader'>Add your animal here:</h3>
+                
                 <form onSubmit= {event=>this.submit(event)}>
+                <h3 className='AddAnimalHeader'>Add your animal here:</h3>
                 <ul>
                 <li><span className="AddAnimalText">Enter name: </span><br></br>
                 <input type="text" value={this.state.name} onChange={event => this.updateInputValue("name", event)}required></input><br></br>
@@ -113,9 +114,10 @@ export class AddAnimal extends React.Component {
                 </li>
                 <li><span className="AddAnimalText">Enter sale: </span><br></br>
                 <input type="number" value={this.state.sale} onChange={event => this.updateInputValue("sale", event)}></input><br></br>
-                </li>
+                </li><br></br>
+                <li><button type="submit">Add Animal</button></li>
                 </ul>
-                <button type="submit">Add Animal</button>
+                
                 </form>
             </div>
         )

@@ -23,12 +23,13 @@ export class Search extends React.Component{
             orderby:"",
             animals:[],
             currentanimalid:0
-        }
-                  
+        }           
     }
 
     componentDidMount(){
         this.updateSearch();
+    }
+    componentDidUpdate(){
     }
 
     updateSearch(){
@@ -256,7 +257,7 @@ export class Search extends React.Component{
                 </div>
                 {this.state.animals &&
                 <div className='results'>
-                    <div className='column'>
+                    <div>
                         {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
                     </div>
                 </div>
@@ -282,7 +283,6 @@ export class Search extends React.Component{
         this.setState({
         currentanimalid:animalid
         })
-        
     }
 
 

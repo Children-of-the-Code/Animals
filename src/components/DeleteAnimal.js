@@ -1,13 +1,30 @@
-import * as React from 'react'
+import * as React from 'react';
 
-export class AnimalCardSearch extends React.Component{
+
+export class DeleteAnimal extends React.Component{
     constructor(props){
-        super(props);
+        super(props)
+        this.setState=({
+            currentAnimal:[]
+        })
     }
+    
+
+
+
+    componentDidMount(){
+        if (this.props.currentanimalid){
+            fetch("https://animalrescueproject.azurewebsites.net/animals/findbyid/"+this.props.currentanimalid)
+            .then(response=>response.json())
+            .then(animal=>{this.setState({currentAnimal:animal}, console.log(animal))})
+        }
+    }
+
 
     render(){
         return(
-            <div className="animallist">
+            <div>
+                <div className="animallist">
                 <p><span className="animalnames">Name: {this.props.name}</span></p>
                 
                 <p>Type: {this.props.type}</p>
@@ -21,21 +38,11 @@ export class AnimalCardSearch extends React.Component{
                 <p>Temperament: {this.props.temperament}</p>
                 
                 <p>Gets Along With: {this.props.gets_along}</p>         
-                
-                {this.props.sale>0&&
-                <span className="sale">
-                    <p>Old Adoption Fee: ${parseFloat((this.props.fee)/((100-this.props.sale)/100).toFixed(2)).toFixed(2)}</p>
-                    
-                    <p>Discount: %{this.props.sale}</p>
-                    
-                    
-                    <p>Fee With Discount Included: ${this.props.fee}</p>
-                    
-                </span>}
 
-                {!this.props.sale&&
                 <p>Adoption Fee: ${this.props.fee}</p>
-                }
+                
+
+            </div>
             </div>
         )
     }

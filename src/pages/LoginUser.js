@@ -87,7 +87,7 @@ export class LoginUser extends React.Component{
                     <div>
                         <form onSubmit={this.handleSubmit}>
                     <p>Username: <input name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
-                    <p>Password: <input name="password" type="text" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
+                    <p>Password: <input name="password" type="password" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
                     <button type="submit" className="login" >Login</button>
                     <p>{this.state.text}</p>
                     </form>
