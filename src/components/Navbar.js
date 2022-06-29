@@ -28,10 +28,12 @@ export class Navbar extends React.Component{
                 <Link className="link" to="/">Home</Link>  
                 <Link className="link" to="/Search">Search</Link>
                 {this.props.role==="Admin"&&
+
                 <Link key={this.props.userid} className="link" to="/EditAnimal">Edit Animals</Link>
                 }
                 {!this.props.loggedin&&
                 <div>
+                 <Link className="loginbutton" to="/Login">Login</Link>
                 <Link className="loginbutton" to="/Login">Login</Link>
                 </div>
                 }

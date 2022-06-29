@@ -11,7 +11,8 @@ export class AnimalPageSearch extends React.Component{
             inquiry:false,
             text:"",
             user_id:"",
-            salepercent:0,
+
+            salepercent:0
             
 
         }
@@ -25,6 +26,7 @@ export class AnimalPageSearch extends React.Component{
             .then(animal=>{animal.map(animals=>{temparray.push(animals)});this.setState({inquiryArray:temparray,user_id:this.props.userid},console.log(this.state.inquiryArray, console.log(this.state.currentAnimal)) ,this.check() )})
         }
         console.log()
+
         if (this.props.currentanimalid){
             fetch("https://animalrescueproject.azurewebsites.net/animals/findbyid/"+this.props.currentanimalid)
             .then(response=>response.json())

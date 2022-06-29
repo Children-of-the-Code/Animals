@@ -24,13 +24,16 @@ export class Search extends React.Component{
             animals:[],
             currentanimalid:0
         }           
+
     }
 
     componentDidMount(){
         this.updateSearch();
     }
+
     componentDidUpdate(){
     }
+
 
     updateSearch(){
         let age=this.state.age;

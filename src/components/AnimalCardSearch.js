@@ -36,6 +36,7 @@ export class AnimalCardSearch extends React.Component{
                 {!this.props.sale&&
                 <p>Adoption Fee: ${this.props.fee}</p>
                 }
+
             </div>
         )
     }
