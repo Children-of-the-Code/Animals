@@ -37,7 +37,7 @@ export class Navbar extends React.Component{
                     }
 
                     {this.props.loggedin&&
-                        <Link to="/UserProfile" className="right-nav-link">User</Link>
+                        <Link className="right-nav-link" to="/UserProfile">User</Link>
                     }
                 </div>
             </header>

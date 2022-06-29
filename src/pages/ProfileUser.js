@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import { ChangePassword } from '../components/ChangePassword';
 
 import '../profileUser.css';
@@ -100,8 +101,8 @@ export class UserProfile extends React.Component{
       return(
         <div className="container">
           <div className="sidenav">
-            <a>View Inquiries</a>
-            <a>View Transactions</a>
+            <Link className="view-inquiries-link" to="/UserProfile">View Inquiries</Link>
+            <Link className="view-transactions-link" to="/UserProfile">View Transactions</Link>
           </div>
           <div className="main">
             <h3>User Profile</h3>

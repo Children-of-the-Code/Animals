@@ -54,6 +54,7 @@ class App extends React.Component {
           <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
           <Route path="/Login" element={<LoginUser loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
+          <Route path="/InquiriesUser" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
         </Routes>
         </div>
       </div>

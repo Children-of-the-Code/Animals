@@ -9,7 +9,7 @@
   padding: 8px 0;
 }
 
-.sidenav a {
+.view-inquiries-link, .view-transactions-link {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 16px;
