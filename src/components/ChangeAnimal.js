@@ -3,7 +3,7 @@ import * as React from 'react';
 export class ChangeAnimal extends React.Component{
     constructor(props){
         super(props)
-        this.handleRefresh.bind(this)
+
         this.state={
             name:"",
             type:"",
@@ -19,8 +19,8 @@ export class ChangeAnimal extends React.Component{
             msg:""
         }
     }
-    handleRefresh(){
-        this.props.handleRefresh();
+    componentDidUpdate(){
+        this.updateList();
     }
 
     componentDidMount(){
@@ -149,7 +149,7 @@ export class ChangeAnimal extends React.Component{
         }).then(this.setState({
             msg:"The animal has been updated! When you revisit this page, you will see your changes"
         }))
-        .then(this.handleRefresh())
+
         
     }
     handleChange(fieldName, event){

@@ -6,23 +6,21 @@ import { ChangeAnimal } from '../components/ChangeAnimal';
 export class EditAnimal extends React.Component{
     constructor(props){
         super(props)
-        this.handleRefresh=this.handleRefresh.bind(this);
+
         this.state={
             animals:[],
             currentanimalid:0
         }
     }
-    handleRefresh(){
-        this.setState({
-            animals:[]
-        },console.log())
-        this.updateList();
-    }
+
     componentDidMount(){
         this.setState({
             animals:[]
         },console.log(this.state.animals))
         this.updateList();    
+    }
+    componentDidUpdate(){
+        this.updateList();
     }
 
     updateList(){
@@ -58,7 +56,7 @@ export class EditAnimal extends React.Component{
                     <div className="content">
                     <h2>Edit The Animal And Submit it!</h2>
                         {this.state.currentanimalid>0&&
-                                <ChangeAnimal key={this.state.currentanimalid} handleRefresh={this.handleRefresh} loggedin={this.props.loggedin} currentanimalid={this.state.currentanimalid} userid={this.props.userid}/>
+                                <ChangeAnimal key={this.state.currentanimalid}  loggedin={this.props.loggedin} currentanimalid={this.state.currentanimalid} userid={this.props.userid}/>
                             }
                     </div>
                 </div>
