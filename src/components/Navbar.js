@@ -28,9 +28,7 @@ export class Navbar extends React.Component{
                 </div>
                 <div className = "right-section">
 
-                    <Link to="/Favorites" className="right-nav-link">Favorites</Link>
-
-                    {!this.props.loggedin&&
+                    {!this.props.loggedin&&//this.props.role==="Admin"&&
                         <Link className="loginbutton" to="/Login">Login</Link>
                     }
 
@@ -38,7 +36,9 @@ export class Navbar extends React.Component{
                         <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
                     }
 
-                    <Link to="/UserProfile" className="right-nav-link">User</Link>
+                    {this.props.loggedin&&
+                        <Link to="/UserProfile" className="right-nav-link">User</Link>
+                    }
                 </div>
             </header>
         )
