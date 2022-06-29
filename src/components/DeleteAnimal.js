@@ -40,6 +40,7 @@ export class DeleteAnimal extends React.Component{
                 <p>Gets Along With: {this.props.gets_along}</p>         
 
                 <p>Adoption Fee: ${this.props.fee}</p>
+                <p>Sale: %{this.props.sale}</p>
                 
 
             </div>

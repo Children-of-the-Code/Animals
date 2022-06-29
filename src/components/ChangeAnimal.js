@@ -12,7 +12,7 @@ export class ChangeAnimal extends React.Component{
             temperament:"",
             gets_along:"",
             fee:"",
-            sale:"",
+            sale:0,
             url:"",
             description:"",
             currentAnimal:[],
@@ -37,6 +37,28 @@ export class ChangeAnimal extends React.Component{
             .then(animal=>{this.setState({currentAnimal:animal}, console.log())})
         }
     }
+    handleSale(e){
+        e.preventDefault();
+        let sale;
+        if(this.state.sale){
+            sale=this.state.sale;
+        }else{
+            sale=this.props.currentAnimal.sale;
+        }
+        fetch("https://animalrescueproject.azurewebsites.net/animals/sale/"+this.props.currentanimalid, {
+                method: "POST",
+                mode: "cors",
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "sale": sale
+                })
+            })
+
+    }
+
+
     handleSubmit(e){
         e.preventDefault();
         let description;
@@ -59,11 +81,6 @@ export class ChangeAnimal extends React.Component{
             url=this.state.url;
         }else{
             url=this.state.currentAnimal.url;
-        }
-        if(this.state.sale){
-            sale=this.state.sale;
-        }else{
-            sale=this.state.currentAnimal.sale;
         }
         if(this.state.name){
             name=this.state.name;
@@ -110,20 +127,7 @@ export class ChangeAnimal extends React.Component{
         else{
             gets_along=this.state.currentAnimal.gets_along;
         }
-        console.log(this.props.currentanimalid)
-        console.log(description)
-        console.log(url)
-        console.log(sale)
-        console.log(name)
-        console.log(age)
-        console.log(gender)
-        console.log(temperament)
-        console.log(type)
-        console.log(fee)
-        console.log(breed)
-        console.log(gets_along)
-
-
+        
         fetch("https://animalrescueproject.azurewebsites.net/animals/changeanimal", {
             method: "POST",
             mode: "cors",
@@ -143,11 +147,10 @@ export class ChangeAnimal extends React.Component{
                 "breed": breed,
                 "gets_along": gets_along,
                 "url": url,
-                "sale": sale
 
             })
         }).then(this.setState({
-            msg:"The animal has been updated! When you revisit this page, you will see your changes"
+            msg:"The animal has been updated!"
         }))
 
         
@@ -243,15 +246,16 @@ export class ChangeAnimal extends React.Component{
                             <li>
                                 <label name="Fee">Fee: </label><input type="number"  value={this.state.currentAnimal.fee} readOnly></input>
                             </li>
-                            <li>
-                                <label name="Sale">Sale: </label><input type="number"  value={this.state.currentAnimal.sale} readOnly></input>
-                            </li>
+
                             <li>
                                 <label name="url">Url: </label><input type="text" value={this.state.currentAnimal.url} readOnly></input>
                             </li>
                             <br></br>
                             <li>
                                 <label name="description">Description: </label><textarea type="text" value={this.state.currentAnimal.description} readOnly></textarea>
+                            </li>
+                            <li>
+                                <label name="Sale">Sale: </label><input type="number" value={this.state.currentAnimal.sale} readOnly></input>
                             </li>
                         </ol>
                         <h5>Values to Change:</h5>
@@ -330,9 +334,7 @@ export class ChangeAnimal extends React.Component{
                             <li>
                                 <label name="Fee">Fee: </label><input type="number" onChange={event=>this.handleChange("fee", event)} ></input>
                             </li>
-                            <li>
-                                <label name="Sale">Sale: </label><input type="number" onChange={event=>this.handleChange("sale", event)} ></input>
-                            </li>
+                            
                             <li>
                                 <label name="url">Url: </label><input type="text" onChange={event=>this.handleChange("url", event)}></input>
                             </li>
@@ -344,6 +346,14 @@ export class ChangeAnimal extends React.Component{
                         <button type="submit">Update Animal</button>
                     </form>
                     <p>{this.state.msg}</p>
+                    <form onSubmit={event=>{this.handleSale(event)}}>
+                        <ol>
+                    <li>
+                                <label name="Sale">Sale: </label><input type="number" onChange={event=>this.handleChange("sale", event)} ></input>
+                            </li>
+                            </ol>
+                            <button type="submit">Update Sale Percentage</button>
+                    </form>
                 </div>
                 
                 
