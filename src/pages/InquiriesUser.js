@@ -11,7 +11,7 @@ export class InquiriesUser extends React.Component{
     componentDidMount(){
 
       let temparray=[];
-      
+
       if (this.props.userid){
         fetch("https://animalrescueproject.azurewebsites.net/inquiries/user/"+this.props.userid)
         .then(response=>response.json())
@@ -36,7 +36,6 @@ export class InquiriesUser extends React.Component{
                 )
               )
             }
-
             </div>
           </div>
         </div>

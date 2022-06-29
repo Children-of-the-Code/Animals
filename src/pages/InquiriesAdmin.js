@@ -30,7 +30,21 @@ export class InquiriesAdmin extends React.Component{
             <div className="results-list">
 
             {this.state.allInquiries.map(inquiry => (
-                  <p>ID: {inquiry.inquiry_id} | Status: {inquiry.status} | Name: {inquiry.animal.name}</p>
+                  <div>
+                    <p>ID: {inquiry.inquiry_id} | Username: {inquiry.user.username} | Animal Name: {inquiry.animal.name} | Status: {inquiry.status}</p>
+                    { inquiry.status == "Pending"&&
+                      <div className = "result-buttons">
+                        <button>Approve</button>
+                        <button>Deny</button>
+                        <button>Cancel</button>
+                      </div>
+                    }
+                    { !inquiry.status == "Pending"&&
+                      <div className = "result-buttons">
+                        <button>Cancel</button>
+                      </div>
+                    }
+                  </div>
                 )
               )
             }
