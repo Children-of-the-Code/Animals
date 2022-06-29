@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { DonationForm } from '../components/DonationForm';
+
 export class TransactionsUser extends React.Component{
     constructor(props){
       super(props);
@@ -37,6 +39,7 @@ export class TransactionsUser extends React.Component{
               )
             }
             </div>
+            <DonationForm userid={this.props.userid}/>
           </div>
         </div>
       )

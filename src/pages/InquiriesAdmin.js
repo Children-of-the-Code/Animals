@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import '../inquiries.css';
+
 export class InquiriesAdmin extends React.Component{
     constructor(props){
       super(props);
@@ -63,28 +65,31 @@ export class InquiriesAdmin extends React.Component{
         <div className="container">
           <div className="main">
             <h3>Inquiries</h3>
-            <div className="results-list">
-
+            <div>
             {this.state.allInquiries.map(inquiry => (
-                  <div>
+                  <div className="flex-container">
+                    <div className="flex-item">
                     <p>ID: {inquiry.inquiry_id} | Username: {inquiry.user.username} | Animal Name: {inquiry.animal.name} | Status: {inquiry.status}</p>
+                    </div>
+                    <div className="flex-item">
                     { inquiry.status == "Pending"&&
-                      <div className = "result-buttons">
+                      <span className = "result-buttons">
                         <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Approved")}}>Approve</button>
                         <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Denied")}}>Deny</button>
                         <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </div>
+                      </span>
                     }
                     { inquiry.status == "Approved"&&
-                      <div className = "result-buttons">
+                      <span className = "result-buttons">
                         <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </div>
+                      </span>
                     }
                     { inquiry.status == "Denied"&&
-                      <div className = "result-buttons">
+                      <span className = "result-buttons">
                         <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </div>
+                      </span>
                     }
+                    </div>
                   </div>
                 )
               )

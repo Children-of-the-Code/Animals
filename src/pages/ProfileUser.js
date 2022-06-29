@@ -129,31 +129,31 @@ export class UserProfile extends React.Component{
             <h3>User Profile</h3>
             <form onSubmit={this.handleSubmit}>
               <label htmlFor="username">Username:</label><br/>
-              <input type="text" id="username" name="username" value={this.state.username} onChange={event => this.handleChange("username", event)}></input><br/>
+              <input type="text" id="username" name="username" value={this.state.username} onChange={event => this.handleChange("username", event)} required></input><br/>
               
               <label htmlFor="fname">First Name:</label><br/>
-              <input type="text" id="fname" name="fname" value={this.state.fname} onChange={event => this.handleChange("fname", event)}></input><br/>
+              <input type="text" id="fname" name="fname" value={this.state.fname} onChange={event => this.handleChange("fname", event)} required></input><br/>
 
               <label htmlFor="lname">Last Name:</label><br/>
-              <input type="text" id="lname" name="lname" value={this.state.lname} onChange={event => this.handleChange("lname", event)}></input><br/>
+              <input type="text" id="lname" name="lname" value={this.state.lname} onChange={event => this.handleChange("lname", event)} required></input><br/>
 
               <label htmlFor="email">Email:</label><br/>
-              <input type="email" id="email" name="email" value={this.state.email} onChange={event => this.handleChange("email", event)}></input><br/>
+              <input type="email" id="email" name="email" value={this.state.email} onChange={event => this.handleChange("email", event)} required></input><br/>
 
               <label htmlFor="address">Address:</label><br/>
-              <input type="text" id="address" name="address" value={this.state.address} onChange={event => this.handleChange("address", event)}></input><br/>
+              <input type="text" id="address" name="address" value={this.state.address} onChange={event => this.handleChange("address", event)} required></input><br/>
 
               <label htmlFor="city">City:</label><br/>
-              <input type="text" id="loc_city" name="loc_city" value={this.state.loc_city} onChange={event => this.handleChange("loc_city", event)}></input><br/>
+              <input type="text" id="loc_city" name="loc_city" value={this.state.loc_city} onChange={event => this.handleChange("loc_city", event)} required></input><br/>
 
               <label htmlFor="state">State:</label><br/>
-              <input type="text" id="loc_state" name="loc_state" value={this.state.loc_state} onChange={event => this.handleChange("loc_state", event)}></input><br/>
+              <input type="text" id="loc_state" name="loc_state" value={this.state.loc_state} onChange={event => this.handleChange("loc_state", event)} required></input><br/>
 
               <label htmlFor="zip">Zipcode:</label><br/>
-              <input type="text" id="loc_zip" name="loc_zip" value={this.state.loc_zip} onChange={event => this.handleChange("loc_zip", event)}></input><br/>
+              <input type="number" id="loc_zip" name="loc_zip" value={this.state.loc_zip} onChange={event => this.handleChange("loc_zip", event)} required></input><br/>
 
               <label htmlFor="phone">Phone Number:</label><br/>
-              <input type="text" id="phone" name="phone" value={this.state.phone} onChange={event => this.handleChange("phone", event)}></input><br/><br/>
+              <input type="number" id="phone" name="phone" value={this.state.phone} onChange={event => this.handleChange("phone", event)} required></input><br/><br/>
 
               <input type="submit" value="Submit"></input><br/>
             </form>
