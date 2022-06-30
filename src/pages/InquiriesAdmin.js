@@ -10,7 +10,8 @@ export class InquiriesAdmin extends React.Component{
       this.state={
         pendingInquiries:[],
         approvedInquiries:[],
-        deniedInquiries:[]
+        deniedInquiries:[],
+        bool: false
       }
     }
 
@@ -18,15 +19,10 @@ export class InquiriesAdmin extends React.Component{
       this.getInquiries()
     }
 
-    componentDidUpdate(){
-    }
-
     getInquiries(){
       let temparray=[];
       let temparray1=[];
       let temparray2=[];
-
-    //Get Pending inquiries
 
       fetch("https://animalrescueproject.azurewebsites.net/inquiries/status/Pending")
       .then(response=>response.json())
@@ -62,9 +58,7 @@ export class InquiriesAdmin extends React.Component{
           <div className="sidenav">
           <Link className="view-inquiries-link" to="/UserProfile">User Profile</Link>
             { this.props.userrole==="User"&&
-              // Role == User ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                //View Inquiries - /InquiriesUser
-                  //List inquiries made by user. Needs: userid
+
                   <div>
                     <hr></hr>
                     <Link className="view-transactions-link" to="/TransactionsUser">View Transactions</Link>

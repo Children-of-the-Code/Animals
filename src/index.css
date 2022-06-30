@@ -121,6 +121,13 @@ border:2px double grey;
   height:200px;
   border-radius: 100px;
   border:2px double grey;
+  transition: opacity 0.2s;
+  
+}
+
+.searchimg:hover{
+  cursor:pointer;
+  opacity: .75;
 }
 
 .flex-box{
