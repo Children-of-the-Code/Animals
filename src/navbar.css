@@ -17,22 +17,3 @@
   margin-right: 10px;
 }
 
-.left-nav-link, .right-nav-link, .login-button{
-  color: rgb(117, 167, 255);
-  border: 1px solid;
-  border-color: rgb(117, 167, 255);
-  padding-top: 0.3em;
-    padding-right: 0.8em;
-    padding-bottom: 0.5em;
-    padding-left: 0.8em;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.4s;
-}
-
-.left-nav-link:hover, .right-nav-link:hover, .login-button:hover{
-  background-color: rgb(250, 201, 255);
-  border-color: rgb(250, 201, 255);
-  color: rgb(245, 157, 255);
-  cursor: pointer;
-}
