@@ -152,6 +152,7 @@ export class AnimalPageSearch extends React.Component{
                 {this.state.currentAnimal&&
                 
                 <div className="contentcard">
+                    <img src={this.state.currentAnimal.url} width="250px" height="250px"></img>
                 <p>Name: {this.state.currentAnimal.name}</p>
                 <p>Type: {this.state.currentAnimal.type}</p>
                 <p>Breed: {this.state.currentAnimal.breed}</p>

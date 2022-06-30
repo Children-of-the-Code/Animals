@@ -52,13 +52,13 @@ export class Home extends React.Component{
                 <div className='results'>
                     <h3>Sale:</h3>
                     <div className='column'>
-                        {this.state.animalsSale.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} sale={animal.sale} fee={animal.fee}></AnimalCardSearch></div>)}
+                        {this.state.animalsSale.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} url={animal.url} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} sale={animal.sale} fee={animal.fee}></AnimalCardSearch></div>)}
                     </div>
                 </div>
                 <div className='results'>
                     <h3>Last-Chance Love:</h3>
                     <div className='column'>
-                        {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
+                        {this.state.animals.map(animal=><div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id, animal.sale)}}><AnimalCardSearch key={animal.animal_id} url={animal.url} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}></AnimalCardSearch></div>)}
                     </div>
                 </div>
                 <div className='content'>

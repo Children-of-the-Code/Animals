@@ -41,7 +41,7 @@ export class DeleteAnimal extends React.Component{
 
                 <p>Adoption Fee: ${this.props.fee}</p>
                 
-
+                
             </div>
             </div>
         )
