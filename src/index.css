@@ -29,7 +29,7 @@ code {
   text-align: center;
   color:aqua;
   background-color: black;
-  font-size:1.3em;
+  font-size:1.05em;
   box-shadow:-2px -2px 4px aqua,2px 2px 4px gray,-2px 2px 4px gray, 2px -2px 4px aqua;
   margin:5px;
 }
@@ -68,7 +68,6 @@ padding-bottom:10px;
 border-radius:15px;
 box-shadow:-2px -2px 4px rgb(176, 172, 172);
 margin-left:5px;
-
 }
 .results{
 
@@ -101,6 +100,7 @@ font-weight: bold;
   width:auto;
   position:fixed;
   word-wrap: normal;
+  padding-bottom:20px;
 }
 
 .animallist{

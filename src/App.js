@@ -52,13 +52,10 @@ class App extends React.Component {
         <Routes>
         <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
           <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
-          {this.state.userrole==="Admin"&&
 
-          <Route path="/AddAnimal" element={<AddAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
-          }
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           <Route path="/Registration" element={<RegistrationUser/>}/>
-
+          {this.state.userrole==="Admin"&&
           <Route path="/EditAnimal" element={<EditAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
