@@ -13,7 +13,8 @@ export class LoginUser extends React.Component{
             userid:"",
             userrole:"",
             loggedin:this.props.loggedin,
-            currentuser:[]
+            currentuser:[],
+            text:""
         }
     }
 
@@ -51,8 +52,7 @@ export class LoginUser extends React.Component{
             })
         })
         .then(response=>response.json())
-        .then(user=>{this.setState({currentuser:user},()=>{this.updateuser(user)})})    
-        
+        .then(user=>{this.setState({currentuser:user},()=>{this.updateuser(user)})})       
     }
     handleSubmit=(e)=>{
         e.preventDefault();
@@ -60,31 +60,42 @@ export class LoginUser extends React.Component{
 
     }
     updateuser(user){
-        this.handleLogin(true);
-        this.handleId(user.user_id);
-        this.handleRole(user.role);
-        this.setState({
-            loggedin:true
-        }) 
+        if(user.user_id>0){
+            this.handleLogin(true);
+            this.handleId(user.user_id);
+            this.handleRole(user.role);
+            this.setState({
+                loggedin:true
+            }) 
+            this.componentDidMount();
+        }   
+        
+        else{
+            this.setState({
+                text:"Please enter a correct username and password to contine"
+            }, console.log(this.state.text))
+        }
     }
 
 
     render(){
         return(
-            <div>
-                <h2>Login</h2>
-                <div>
-                    {this.state.loggedin==false&&
+            <div>    
+                <div className='reg'>
+                    {this.state.loggedin===false&&
                     <div>
-                        <form onSubmit={this.handleSubmit}>
-                    <p>Username: <input name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
-                    <p>Password: <input name="password" type="text" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
-                    <button type="submit" className="login" >Login</button>
+                        
+                        <form className="formstyle" onSubmit={this.handleSubmit}>
+                        <h1>Login</h1>
+                    <p>Username: <input className="reginput" name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
+                    <p>Password: <input className="reginput" name="password" type="password" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
+                    <div className="center"><button type="submit" className="loginbutton" >Login</button></div>
+                    <p>{this.state.text}</p>
                     </form>
                     </div>
                     }
-                    {this.state.loggedin==true&&
-                        <div><p>You are logged in</p></div>
+                    {this.state.loggedin===true&&
+                        <div><h2>You are logged in</h2></div>
                     }
                 </div>
             </div>

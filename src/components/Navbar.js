@@ -21,26 +21,33 @@ export class Navbar extends React.Component{
 
     render(){
         return(
-            <header className="navbar">
-                <div className="left-section">
-                    <Link to="/" className="left-nav-link">Home</Link>
-                    <Link to="/Search" className="left-nav-link">Find A Pet</Link>
+            <div className="navbar">   <div className='linkdiv'>
+                <Link className="link" to="/">Home</Link>  
+                <Link className="link" to="/Search">Find A Pet</Link>
+                {this.props.role==="Admin"&&
+
+                <Link key={this.props.userid} className="link" to="/EditAnimal">Edit Animals</Link>
+                }
                 </div>
-                <div className = "right-section">
-
-                    {!this.props.loggedin&&//this.props.role==="Admin"&&
-                        <Link className="loginbutton" to="/Login">Login</Link>
-                    }
-
-                    {this.props.loggedin&&
-                        <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
-                    }
-
-                    {this.props.loggedin&&
-                        <Link className="right-nav-link" to="/UserProfile">User</Link>
-                    }
+                <div class="buttonsdiv">
+                {!this.props.loggedin&&
+                    <span>
+                    <Link className="loginbutton" to="/Login">Login</Link>
+                 <Link className="loginbutton" to="/Registration">Register</Link>  
+                 </span> 
+                
+                }
+                {this.props.loggedin&&
+                    <span>
+                  <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
+                    </span>
+                }
+                {this.props.loggedin&&
+                  <Link className="right-nav-link" to="/UserProfile">User</Link>
+                }
                 </div>
-            </header>
+            </div>
+
         )
     }
 }

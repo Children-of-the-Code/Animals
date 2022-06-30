@@ -1,5 +1,9 @@
 import React from 'react';
+
 import{Navbar} from './components/Navbar';
+import ReactDOM from 'react-dom/client';
+import{Navbar} from './components/Navbar';
+import reportWebVitals from './reportWebVitals';
 import {
   Route,
   Routes,
@@ -16,6 +20,11 @@ import { TransactionsAdmin } from './pages/TransactionsAdmin';
 import { DonationForm } from './components/DonationForm';
 
 
+import {RegistrationUser} from './pages/RegistrationUser';
+
+import {EditAnimal} from './pages/EditAnimal';
+
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -29,22 +38,17 @@ class App extends React.Component {
     }
   }
   handleLogin(loggedins){
-    this.setState({loggedin:loggedins},);
+
+    this.setState({loggedin:loggedins},console.log());
  
   }
   handleId(id){
-    this.setState({userid:id});
+    this.setState({userid:id},console.log());
   
   }
   handleRole(role){
-    this.setState({userrole:role});
+    this.setState({userrole:role},console.log());
   }
-  componentDidUpdate(){
-    console.log(this.state.loggedin);
-    console.log(this.state.userid);
-    console.log(this.state.userrole);
-  }
-
   
   render(){
   return (
@@ -52,18 +56,29 @@ class App extends React.Component {
       <HashRouter>
       <div>
         <div>
-        <Navbar loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></Navbar>
+        <Navbar key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></Navbar>
         </div>
         <div>
         <Routes>
-        <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role}/>}/>
-          <Route path="/Login" element={<LoginUser loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+        <Route path="/" element={<Home loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
+          <Route path="/Search" element={<Search loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole}/>}/>
+
+          <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          <Route path="/Registration" element={<RegistrationUser/>}/>
+          {this.state.userrole==="Admin"&&
+          
+           
+          <Route path="/EditAnimal" element={<EditAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          }
+          {this.state.userrole==="Admin"&&
+          <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          }
           <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
           <Route path="/InquiriesUser" element={<InquiriesUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
           <Route path="/InquiriesAdmin" element={<InquiriesAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
           <Route path="/TransactionsUser" element={<TransactionsUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
           <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+
         </Routes>
         </div>
       </div>
