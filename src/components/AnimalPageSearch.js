@@ -11,55 +11,91 @@ export class AnimalPageSearch extends React.Component{
             inquiry:false,
             text:"",
             user_id:"",
-
-            salepercent:0
-            
-
+            currentInquiry:[],
+            inquirystatusarray:[],
+            salepercent:0,
+            cancelbool:false
         }
     }
     componentDidMount(){  
-        var temparray=[];
-        if (this.props.userid&&this.props.currentanimalid){
-            console.log("stepped into user");
-            fetch("https://animalrescueproject.azurewebsites.net/inquiries/animallist/"+this.props.userid)
-            .then(response=>response.json())
-            .then(animal=>{animal.map(animals=>{temparray.push(animals)});this.setState({inquiryArray:temparray,user_id:this.props.userid},console.log(this.state.inquiryArray, console.log(this.state.currentAnimal)) ,this.check() )})
+        this.inquiries();
+        
+        this.getcurrentanimalid();
+        this.componentDidUpdate();
+    }
+    componentDidUpdate(){
+        
+        if(this.state.cancelbool){
+            this.inquiries();
+            this.setState({
+                cancelbool:false
+            },console.log(this.state.cancelbool))
         }
-        console.log()
+        this.buttoncheck();
+    }
 
+    componentWillUnmount(){
+        this.setState({
+            inquiry:false
+        }, console.log(this.state.inquiry)) 
+    }
+    getcurrentanimalid(){
         if (this.props.currentanimalid){
             fetch("https://animalrescueproject.azurewebsites.net/animals/findbyid/"+this.props.currentanimalid)
             .then(response=>response.json())
             .then(animal=>{this.setState({currentAnimal:animal, salepercent:animal.fee/((100-animal.sale)/100)}, console.log())})
         }
     }
-    componentWillUnmount(){
-        this.setState({
-            inquiry:false
-        }, console.log(this.state.inquiry)) 
+    inquiries(){
+        var temparray=[];
+        var temparray2=[];
+        if(this.props.userid){
+
+            fetch("https://animalrescueproject.azurewebsites.net/inquiries/user/"+this.props.userid)
+            .then(response=>response.json())
+            .then(inquiry=>{inquiry.map(inquiries=>{temparray2.push(inquiries)});this.setState({inquirystatusarray:temparray2}, console.log(this.state.inquirystatusarray))})
+
+        }
+        if (this.props.userid&&this.props.currentanimalid){
+
+            fetch("https://animalrescueproject.azurewebsites.net/inquiries/animallist/"+this.props.userid)
+            .then(response=>response.json())
+            .then(animal=>{animal.map(animals=>{temparray.push(animals)});this.setState({inquiryArray:temparray,user_id:this.props.userid},console.log(this.state.inquiryArray), console.log(this.state.currentAnimal) ,this.check() )})
+        }
+        console.log()
+
     }
 
+   
+
     check(){  
-        let checkboolean=false;
-        console.log(this.props.currentanimalid);
-     checkboolean=this.state.inquiryArray.every(this.check2,this.state.currentAnimal);
-     console.log(checkboolean);
-     if(checkboolean==false){
+        let checkboolean=true;
         
+     checkboolean=this.state.inquiryArray.every(this.check2,this.state.currentAnimal);
+     if(checkboolean==false){
         this.setState({
             inquiry:true
-        })
+        }, console.log(this.state.inquiry), this.updateinquiry(true))
     }
     else{
-       
         this.setState({
             inquiry:false
-        })
+        }, console.log(this.state.inquiry))
     }
+    
+    }
+    updateinquiry(bool){
+        
+
+        if(bool){
+            console.log("https://animalrescueproject.azurewebsites.net/inquiries/getinquiry/user/"+this.props.userid+"/animal/"+this.props.currentanimalid)
+            fetch("https://animalrescueproject.azurewebsites.net/inquiries/getinquiry/user/"+this.props.userid+"/animal/"+this.props.currentanimalid)
+            .then(response=>response.json())
+            .then(inquiry=>{this.setState({currentInquiry:inquiry},console.log(this.state.currentInquiry))})
+        }
+
     }
     check2(item){
-        console.log(item.animal_id)
-        console.log(this.animal_id)
         if(item.animal_id===this.animal_id){
             return false;
         }else{
@@ -71,10 +107,9 @@ export class AnimalPageSearch extends React.Component{
         if(!loggedin){
             return <Link className="loginbutton" to="/Login">Log in to submit an adoption inquiry</Link>;
         }else if(loggedin&&inquiry&&this.state.currentAnimal){
-            return <span className="loginbutton">"Inquiry Submitted"</span>;            
+            return <button type="submit" onClick={()=>{this.cancelinquiry();}} className="loginbutton">"Cancel Adoption Inquiry"</button>;            
         }else if(loggedin&&!inquiry){
-                            return <button type="submit" onClick={()=>{this.addinquiry();}} className="loginbutton">Apply to adopt this animal!</button>;
-
+             return <button type="submit" onClick={()=>{this.addinquiry();}} className="loginbutton">Apply to adopt this animal!</button>;
         }
     }
     addinquiry(){
@@ -88,7 +123,25 @@ export class AnimalPageSearch extends React.Component{
                 "user_id":this.state.user_id,
                 "animal_id":this.state.currentAnimal.animal_id
             })
-        })  
+        })
+        this.setState({
+            cancelbool:true
+        },console.log(this.state.cancelbool))
+        this.componentDidUpdate();
+       
+    }
+    cancelinquiry(){        
+        fetch("https://animalrescueproject.azurewebsites.net/inquiries/delete/"+this.state.currentInquiry.inquiry_id,{
+            method: "DELETE",
+            mode: "cors",
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        this.setState({
+            cancelbool:true
+        },console.log(this.state.cancelbool))
+        this.componentDidUpdate();
     }
 
     

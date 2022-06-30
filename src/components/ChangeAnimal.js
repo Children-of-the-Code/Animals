@@ -28,7 +28,6 @@ export class ChangeAnimal extends React.Component{
         this.setState({
             msg:""
         })
-
     }
     updateList(){
         if (this.props.currentanimalid){
@@ -170,107 +169,21 @@ export class ChangeAnimal extends React.Component{
                     <div className="contentcard">
                 
                     <form onSubmit={(event)=>{this.handleSubmit(event)}}>
-                        <h5>Current Values</h5>
-                        <ol>
-                        <li><label name="name">Name: </label><input type="text" value={this.state.currentAnimal.name} readOnly></input></li>
-                            <li><label name="Type">Type: </label>
-                                <select name="Type" onChange={event=>this.handleChange("type",event)} value={this.state.currentAnimal.type}readOnly>
-                                    <option value="">Select one</option>
-                                    <option value="Cat">Cat</option>
-                                    <option value="Dog">Dog</option>
-                                </select>
-                            </li>
-                            <li><label name="Breed">Breed: </label>
-                                <select name="Breed" onChange={event=>this.handleChange("breed",event)} value={this.state.currentAnimal.breed}readOnly>
-                                    <option value="">Select One</option>
-                                    <option value="Abyssinian">Abyssinian</option>
-                                    <option value="Aussiedoodle">Aussiedoodle</option>
-                                    <option value="Beagle">Beagle</option>
-                                    <option value="Bombay">Bombay</option>
-                                    <option value="Bulldog">Bulldog</option>
-                                    <option value="Calico">Calico</option>
-                                    <option value="Chihuahua">Chihuahua</option>
-                                    <option value="Dalmatian">Dalmatian</option>
-                                    <option value="Feist">Feist</option>
-                                    <option value="Greyhound">Greyhound</option>
-                                    <option value="Havana">Havana</option>
-                                    <option value="Hound">Hound</option>
-                                    <option value="Husky">Husky</option>
-                                    <option value="Jindo">Jindo</option>
-                                    <option value="Labrador">Labrador</option>
-                                    <option value="Manx">Manx</option>
-                                    <option value="Mastiff">Mastiff</option>
-                                    <option value="Mix">Mix</option>
-                                    <option value="Persian">Persian</option>
-                                    <option value="Ocicat">Ocicat</option>
-                                    <option value="Other">Other</option>
-                                    <option value="Ragdoll">Ragdoll</option>
-                                    <option value="Rottweiler">Rottweiler</option>
-                                    <option value="Shepherd">Shepherd</option>
-                                    <option value="Siamese">Siamese</option>
-                                    <option value="Sphynx">Sphynx</option>
-                                    <option value="Tabby">Tabby</option>
-                                    <option value="Tuxedo">Tuxedo</option>
-                                </select>
-                            </li>
-                            <li><label name="age">Age: </label><input type="number" value={this.state.currentAnimal.age} readOnly></input></li>
-                            <li><label name="Gender">Gender: </label>
-                                    <select name="Gender" value={this.state.currentAnimal.gender} readOnly>
-                                        <option value="">Select one</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                            </li>
-                            <li>
-                                <label name="Temperament">Temperament:"</label>
-                                    <select name="Temperament" value={this.state.currentAnimal.temperament}readOnly>
-                                        <option value="">Select one</option>
-                                        <option value="Mild">Mild</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Hot">Hot</option>
-                                        <option value="Spicy">Spicy</option>
-                                    </select>
-                            </li>
-                            <li>
-                                <label name="Gets_along">Gets Along With: </label>
-                                    <select name="Gets_along"  value={this.state.currentAnimal.gets_along} readOnly>
-                                        <option value="">Select one</option>
-                                        <option value="Dogs">Dogs</option>
-                                        <option value="Cats">Cats</option>
-                                        <option value="kids">Kids</option>
-                                        <option value="AllAnimals">All Animals</option>
-                                        <option value="AllAnimalKids">All Animals And Kids</option>
-                                        <option value="None">None</option>
-                                    </select>
-                            </li>
-                            <li>
-                                <label name="Fee">Fee: </label><input type="number"  value={this.state.currentAnimal.fee} readOnly></input>
-                            </li>
-
-                            <li>
-                                <label name="url">Url: </label><input type="text" value={this.state.currentAnimal.url} readOnly></input>
-                            </li>
-                            <br></br>
-                            <li>
-                                <label name="description">Description: </label><textarea type="text" value={this.state.currentAnimal.description} readOnly></textarea>
-                            </li>
-                            <li>
-                                <label name="Sale">Sale: </label><input type="number" value={this.state.currentAnimal.sale} readOnly></input>
-                            </li>
-                        </ol>
+                        
+                        
                         <h5>Values to Change:</h5>
                         <ol>
-                            <li><label name="name">Name: </label><input type="text" onChange={event=>this.handleChange("name",event)}></input></li>
+                            <li><label name="name">Name: </label><input type="text" onChange={event=>this.handleChange("name",event)} placeholder={this.state.currentAnimal.name}></input></li>
                             <li><label name="Type">Type: </label>
-                                <select name="Type" onChange={event=>this.handleChange("type",event)}>
-                                    <option value="">Select one</option>
+                                <select name="Type" onChange={event=>this.handleChange("type",event)} >
+                                    <option value="">{this.state.currentAnimal.type}</option>
                                     <option value="Cat">Cat</option>
                                     <option value="Dog">Dog</option>
                                 </select>
                             </li>
                             <li><label name="Breed">Breed: </label>
-                                <select name="Breed" onChange={event=>this.handleChange("breed",event)}>
-                                    <option value="">Select One</option>
+                                <select name="Breed" onChange={event=>this.handleChange("breed",event)} >
+                                    <option value="">{this.state.currentAnimal.breed}</option>
                                     <option value="Abyssinian">Abyssinian</option>
                                     <option value="Aussiedoodle">Aussiedoodle</option>
                                     <option value="Beagle">Beagle</option>
@@ -301,10 +214,10 @@ export class ChangeAnimal extends React.Component{
                                     <option value="Tuxedo">Tuxedo</option>
                                 </select>
                             </li>
-                            <li><label name="age">Age: </label><input type="number" onChange={event=>this.handleChange("age",event)}></input></li>
+                            <li><label name="age">Age: </label><input type="number" onChange={event=>this.handleChange("age",event)} placeholder={this.state.currentAnimal.age}></input></li>
                             <li><label name="Gender">Gender: </label>
                                     <select name="Gender" onChange={event=>this.handleChange("gender",event)}>
-                                        <option value="">Select one</option>
+                                        <option value="">{this.state.currentAnimal.gender}</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
@@ -312,7 +225,7 @@ export class ChangeAnimal extends React.Component{
                             <li>
                                 <label name="Temperament">Temperament:"</label>
                                     <select name="Temperament" onChange={event=>this.handleChange("temperament",event)}>
-                                        <option value="">Select one</option>
+                                        <option value="">{this.state.currentAnimal.temperament}</option>
                                         <option value="Mild">Mild</option>
                                         <option value="Medium">Medium</option>
                                         <option value="Hot">Hot</option>
@@ -321,8 +234,8 @@ export class ChangeAnimal extends React.Component{
                             </li>
                             <li>
                                 <label name="Gets_along">Gets Along With: </label>
-                                    <select name="Temperament" onChange={event=>this.handleChange("gets_along",event)}>
-                                        <option value="">Select one</option>
+                                    <select name="Gets_along" onChange={event=>this.handleChange("gets_along",event)} >
+                                        <option value="">{this.state.currentAnimal.gets_along}</option>
                                         <option value="Dogs">Dogs</option>
                                         <option value="Cats">Cats</option>
                                         <option value="Kids">Kids</option>
@@ -332,15 +245,14 @@ export class ChangeAnimal extends React.Component{
                                     </select>
                             </li>
                             <li>
-                                <label name="Fee">Fee: </label><input type="number" onChange={event=>this.handleChange("fee", event)} ></input>
+                                <label name="Fee">Fee: </label><input type="number" onChange={event=>this.handleChange("fee", event)} placeholder={this.state.currentAnimal.fee}></input>
                             </li>
                             
                             <li>
-                                <label name="url">Url: </label><input type="text" onChange={event=>this.handleChange("url", event)}></input>
+                                <label name="url">Url: </label><input type="text" onChange={event=>this.handleChange("url", event)} placeholder={this.state.currentAnimal.url}></input>
                             </li>
-                            <br></br>
                             <li>
-                                <label name="description">Description: </label><textarea type="text" onChange={event=>this.handleChange("description", event)}></textarea>
+                                <label name="description">Description: </label><textarea type="text" onChange={event=>this.handleChange("description", event)}placeholder={this.state.currentAnimal.description}></textarea>
                             </li>
                         </ol>
                         <button type="submit">Update Animal</button>
@@ -349,7 +261,7 @@ export class ChangeAnimal extends React.Component{
                     <form onSubmit={event=>{this.handleSale(event)}}>
                         <ol>
                     <li>
-                                <label name="Sale">Sale: </label><input type="number" onChange={event=>this.handleChange("sale", event)} ></input>
+                                <label name="Sale">Sale: </label><input type="number" onChange={event=>this.handleChange("sale", event)} placeholder={this.state.currentAnimal.sale}></input>
                             </li>
                             </ol>
                             <button type="submit">Update Sale Percentage</button>
