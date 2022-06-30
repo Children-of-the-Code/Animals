@@ -97,7 +97,7 @@ export class RegistrationUser extends React.Component{
 
                     <input className="reginput" placeholder='Check Password' onChange={event => this.handleChange("password2", event)} type="password" required/><br></br>
 
-                    <button type="submit">Submit User</button>
+                    <div className='center'><button type="submit" className='loginbutton'>Submit User</button></div>
                 </form>
                 <p>{this.state.message}</p>
             </div>

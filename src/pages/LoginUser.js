@@ -90,13 +90,13 @@ export class LoginUser extends React.Component{
                         <h1>Login</h1>
                     <p>Username: <input className="reginput" name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
                     <p>Password: <input className="reginput" name="password" type="password" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
-                    <button type="submit" className="login" >Login</button>
+                    <div className="center"><button type="submit" className="loginbutton" >Login</button></div>
                     <p>{this.state.text}</p>
                     </form>
                     </div>
                     }
                     {this.state.loggedin===true&&
-                        <div><p>You are logged in</p></div>
+                        <div><h2>You are logged in</h2></div>
                     }
                 </div>
             </div>

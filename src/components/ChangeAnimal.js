@@ -255,7 +255,7 @@ export class ChangeAnimal extends React.Component{
                                 <label name="description">Description: </label><textarea type="text" onChange={event=>this.handleChange("description", event)}placeholder={this.state.currentAnimal.description}></textarea>
                             </li>
                         </ol>
-                        <button type="submit">Update Animal</button>
+                        <div className="center"><button className="loginbutton" type="submit">Update Animal</button></div>
                     </form>
                     <p>{this.state.msg}</p>
                     <form onSubmit={event=>{this.handleSale(event)}}>
@@ -264,7 +264,7 @@ export class ChangeAnimal extends React.Component{
                                 <label name="Sale">Sale: </label><input type="number" onChange={event=>this.handleChange("sale", event)} placeholder={this.state.currentAnimal.sale}></input>
                             </li>
                             </ol>
-                            <button type="submit">Update Sale Percentage</button>
+                            <div className='center'><button className='loginbutton' type="submit">Update Sale Percentage</button></div>
                     </form>
                 </div>
                 
