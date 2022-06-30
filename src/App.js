@@ -1,4 +1,6 @@
 import React from 'react';
+
+import{Navbar} from './components/Navbar';
 import ReactDOM from 'react-dom/client';
 import{Navbar} from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
@@ -10,9 +12,18 @@ import {
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
 import { LoginUser } from './pages/LoginUser';
+import { UserProfile } from './pages/ProfileUser';
+import { InquiriesUser } from './pages/InquiriesUser';
+import { InquiriesAdmin } from './pages/InquiriesAdmin';
+import { TransactionsUser } from './pages/TransactionsUser';
+import { TransactionsAdmin } from './pages/TransactionsAdmin';
+import { DonationForm } from './components/DonationForm';
+
+
 import {RegistrationUser} from './pages/RegistrationUser';
 
 import {EditAnimal} from './pages/EditAnimal';
+
 
 class App extends React.Component {
   constructor(props){
@@ -27,6 +38,7 @@ class App extends React.Component {
     }
   }
   handleLogin(loggedins){
+
     this.setState({loggedin:loggedins},console.log());
  
   }
@@ -61,9 +73,17 @@ class App extends React.Component {
           {this.state.userrole==="Admin"&&
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           }
+          <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          <Route path="/InquiriesUser" element={<InquiriesUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/InquiriesAdmin" element={<InquiriesAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/TransactionsUser" element={<TransactionsUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
 
         </Routes>
         </div>
+      </div>
+      <div>
+        <DonationForm loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></DonationForm>
       </div>
     </HashRouter>
     </div>

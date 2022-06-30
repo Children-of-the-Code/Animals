@@ -80,8 +80,7 @@ export class LoginUser extends React.Component{
 
     render(){
         return(
-            <div>
-                
+            <div>    
                 <div className='reg'>
                     {this.state.loggedin===false&&
                     <div>

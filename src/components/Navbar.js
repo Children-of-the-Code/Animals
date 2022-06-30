@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-
+import '../navbar.css';
 
 export class Navbar extends React.Component{
     constructor(props){
@@ -8,7 +8,6 @@ export class Navbar extends React.Component{
         this.handleLogin=this.handleLogin.bind(this);
         this.handleId=this.handleId.bind(this);
         this.handleRole=this.handleRole.bind(this);
-        
     }
     handleLogin(t){
         this.props.handleLogin(t);
@@ -19,14 +18,12 @@ export class Navbar extends React.Component{
     handleRole(){
         this.props.handleRole("");
     }
-    
-    
 
     render(){
         return(
             <div className="navbar">   <div className='linkdiv'>
                 <Link className="link" to="/">Home</Link>  
-                <Link className="link" to="/Search">Search</Link>
+                <Link className="link" to="/Search">Find A Pet</Link>
                 {this.props.role==="Admin"&&
 
                 <Link key={this.props.userid} className="link" to="/EditAnimal">Edit Animals</Link>
@@ -42,11 +39,16 @@ export class Navbar extends React.Component{
                 }
                 {this.props.loggedin&&
                     <span>
-                <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
+                  <Link className="loginbutton" onClick={()=>{this.props.handleLogin(false);this.handleId();this.handleRole()}} to="/Login" >Logout</Link>
                     </span>
+                }
+                {this.props.loggedin&&
+                  <Link className="right-nav-link" to="/UserProfile">User</Link>
                 }
                 </div>
             </div>
+
         )
     }
 }
+
