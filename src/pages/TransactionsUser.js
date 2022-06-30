@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TransactionCard } from '../components/TransactionCard';
+import { TransactionUserCard } from '../components/TransactionUserCard';
 
 export class TransactionsUser extends React.Component{
     constructor(props){
@@ -18,8 +18,7 @@ export class TransactionsUser extends React.Component{
       this.addTransactions()
     }
 
-    addTransactions(){
-
+    addTransactions(){  // Gets transactions from a specific user
       let temparray=[];
 
       if (this.props.userid){
@@ -41,7 +40,7 @@ export class TransactionsUser extends React.Component{
             <h3>Transactions</h3>
             <div className="results-list">
             {this.state.allTransactions.map(transaction => (
-                  <TransactionCard key={transaction.donation_id} date={transaction.date_added} amount={transaction.amount}/>
+                  <TransactionUserCard key={transaction.donation_id} date={transaction.date_added} amount={transaction.amount}/>
                 )
               )
             }

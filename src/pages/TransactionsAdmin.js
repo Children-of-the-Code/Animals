@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TransactionAdminCard } from '../components/TransactionAdminCard';
 
 export class TransactionsAdmin extends React.Component{
     constructor(props){
@@ -9,7 +10,14 @@ export class TransactionsAdmin extends React.Component{
     }
 
     componentDidMount(){
+      this.addTransactions()
+    }
 
+    componentDidUpdate(){
+      this.addTransactions()
+    }
+
+    addTransactions(){ // Gets all transactions
       let temparray=[];
       
       if (this.props.userid){
@@ -30,9 +38,8 @@ export class TransactionsAdmin extends React.Component{
           <div className="main">
             <h3>Transactions</h3>
             <div className="results-list">
-
             {this.state.allTransactions.map(transaction => (
-                  <p>ID: {transaction.donation_id} | Username: {transaction.user.username} | Date: {transaction.date_added} | Amount: {transaction.amount} | Type: Donation</p>
+                  <TransactionAdminCard key={transaction.donation_id} transactionId={transaction.donation_id} username={transaction.user.username} date={transaction.date_added} amount={transaction.amount}/>
                 )
               )
             }

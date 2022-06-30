@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export class TransactionCard extends React.Component{
+export class TransactionUserCard extends React.Component{
   constructor(props){
     super(props)
   }

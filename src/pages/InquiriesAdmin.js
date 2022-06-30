@@ -20,7 +20,6 @@ export class InquiriesAdmin extends React.Component{
     }
 
     getInquiries(){
-
       let temparray=[];
 
       fetch("https://animalrescueproject.azurewebsites.net/inquiries/")

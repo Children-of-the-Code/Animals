@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { UserInquiryCard } from '../components/UserInquiryCard';
 
 export class InquiriesUser extends React.Component{
     constructor(props){
@@ -9,7 +10,14 @@ export class InquiriesUser extends React.Component{
     }
 
     componentDidMount(){
+      this.getInquiries()
+    }
 
+    componentDidUpdate(){
+      this.getInquiries()
+    }
+
+    getInquiries(){
       let temparray=[];
 
       if (this.props.userid){
@@ -24,7 +32,7 @@ export class InquiriesUser extends React.Component{
       }
     }
 
-    render(){
+    render() {
       return(
         <div className="container">
           <div className="main">
@@ -32,7 +40,7 @@ export class InquiriesUser extends React.Component{
             <div className="results-list">
 
             {this.state.allInquiries.map(inquiry => (
-                  <p>Name: {inquiry.animal.name} | Fee: {inquiry.animal.fee} | Status: {inquiry.status}</p>
+                  <UserInquiryCard key={inquiry.inquiry_id} inquiryId={inquiry.inquiry_id} animalName={inquiry.animal.name} animalFee={inquiry.animal.fee} inquiryStatus={inquiry.status}/>
                 )
               )
             }
@@ -42,29 +50,3 @@ export class InquiriesUser extends React.Component{
       )
     }
 }
-
-//{this.getInquiryStatus(this.props.userid, animal.animal_id)}
-
-/*
-  {Fruits.map(data => (
-        <p>{data.name}</p>
-  ))}
-*/
-
-/*
-{this.state.animals &&
-  <div className='results'>
-    <div>
-      {
-        this.state.animals.map(
-          animal =>
-            <div className="animalItem" onClick={()=>{this.navigateToAnimal(animal.animal_id)}}>
-              <AnimalCardSearch key={animal.animal_id} description={animal.description}  name={animal.name} type={animal.type} breed={animal.breed} age={animal.age} gender={animal.gender} temperament={animal.temperament} gets_along={animal.gets_along} fee={animal.fee}>
-              </AnimalCardSearch>
-            </div>
-        )
-      }
-    </div>
-  </div>
-
-}*/

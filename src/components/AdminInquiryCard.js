@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CancelInquiryButton } from './CancelInquiryButton';
 
 export class AdminInquiryCard extends React.Component{
   constructor(props){
@@ -32,18 +33,6 @@ export class AdminInquiryCard extends React.Component{
 
   }
 
-  cancelInquiry(id){ // Delete inquiry from system
-    fetch("https://animalrescueproject.azurewebsites.net/inquiries/delete/"+id, {
-      method: 'DELETE',
-      mode: "cors",
-      headers:{
-          'Content-Type': 'application/json'
-      }
-      })
-      .then(response=>response.json())
-      .then(console.log("Inquiry with the ID " + id + " deleted."))
-  }
-
   render() {
     return(
       <div className="flex-container">
@@ -55,17 +44,7 @@ export class AdminInquiryCard extends React.Component{
             <span className = "result-buttons">
               <button onClick={() => {this.submitStatus(this.props.inquiryId,"Approved")}}>Approve</button>
               <button onClick={() => {this.submitStatus(this.props.inquiryId,"Denied")}}>Deny</button>
-              <button onClick={() => {this.cancelInquiry(this.props.inquiryId)}}>Cancel</button>
-            </span>
-          }
-          { this.props.inquiryStatus == "Approved"&&
-            <span className = "result-buttons">
-              <button onClick={() => {this.cancelInquiry(this.props.inquiryId)}}>Cancel</button>
-            </span>
-          }
-          { this.props.inquiryStatus == "Denied"&&
-            <span className = "result-buttons">
-              <button onClick={() => {this.cancelInquiry(this.props.inquiryId)}}>Cancel</button>
+              <CancelInquiryButton inquiryId={this.props.inquiryId}/>
             </span>
           }
         </div>
