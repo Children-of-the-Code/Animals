@@ -19,7 +19,7 @@ export class CancelInquiryButton extends React.Component{
 
   render(){
     return(
-      <button onClick={() => {this.cancelInquiry(this.props.inquiryId)}}>Cancel</button>
+      <button className="loginbutton" onClick={() => {this.cancelInquiry(this.props.inquiryId)}}>Cancel</button>
     )
   }
 

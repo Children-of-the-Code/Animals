@@ -9,8 +9,9 @@ export class UserInquiryCard extends React.Component{
   render(){
     return(
       <div>
-        <p>Name: {this.props.animalName} | Fee: {this.props.animalFee} | Status: {this.props.inquiryStatus}</p>
-        <CancelInquiryButton inquiryId={this.props.inquiryId}/>
+        <p>Name: {this.props.animalName} | Fee: {this.props.animalFee} | Status: {this.props.inquiryStatus}
+            <CancelInquiryButton inquiryId={this.props.inquiryId}/>
+        </p>
       </div>
     )
   }

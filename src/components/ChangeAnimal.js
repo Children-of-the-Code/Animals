@@ -255,7 +255,7 @@ export class ChangeAnimal extends React.Component{
                                 <label name="description">Description: </label><textarea type="text" onChange={event=>this.handleChange("description", event)}placeholder={this.state.currentAnimal.description}></textarea>
                             </li>
                         </ol>
-                        <div className="center"><button className="loginbutton" type="submit">Update Animal</button></div>
+                        <div className="center"><button className="right-nav-link" type="submit">Update Animal</button></div>
                     </form>
                     <p>{this.state.msg}</p>
                     <form onSubmit={event=>{this.handleSale(event)}}>

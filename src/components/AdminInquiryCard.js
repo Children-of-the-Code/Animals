@@ -42,8 +42,8 @@ export class AdminInquiryCard extends React.Component{
         
           { this.props.inquiryStatus == "Pending"&&
             <span>
-              <button onClick={() => {this.submitStatus(this.props.inquiryId,"Approved")}}>Approve</button>
-              <button onClick={() => {this.submitStatus(this.props.inquiryId,"Denied")}}>Deny</button>
+              <button className='loginbutton' onClick={() => {this.submitStatus(this.props.inquiryId,"Approved")}}>Approve</button>
+              <button className="right-nav-link" onClick={() => {this.submitStatus(this.props.inquiryId,"Denied")}}>Deny</button>
               <CancelInquiryButton inquiryId={this.props.inquiryId}/>
             </span>
           }
