@@ -1,14 +1,4 @@
-.sidenav{
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 200px;
-  left: 40px;
-  background: white;
-  overflow-x: hidden;
-  padding: 8px 0;
-  border-radius:20px;
-}
+
 
 .view-inquiries-link, .view-transactions-link {
   padding: 6px 8px 6px 16px;
