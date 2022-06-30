@@ -69,11 +69,21 @@ class App extends React.Component {
           {this.state.userrole==="Admin"&&
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           }
-          <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
-          <Route path="/InquiriesUser" element={<InquiriesUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
-          <Route path="/InquiriesAdmin" element={<InquiriesAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
-          <Route path="/TransactionsUser" element={<TransactionsUser loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
-          <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
+          {this.state.loggedin&&
+            <Route path="/UserProfile" element={<UserProfile loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          }
+          {this.state.loggedin&&
+            <Route path="/InquiriesUser" element={<InquiriesUser loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          }
+          {this.state.loggedin&&
+            <Route path="/InquiriesAdmin" element={<InquiriesAdmin loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          }
+          {this.state.loggedin&&
+            <Route path="/TransactionsUser" element={<TransactionsUser loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          }
+          {this.state.loggedin&&
+            <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid} userrole={this.state.userrole}/>}/>
+          }
 
         </Routes>
         </div>

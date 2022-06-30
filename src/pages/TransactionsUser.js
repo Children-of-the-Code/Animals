@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 
 import { TransactionUserCard } from '../components/TransactionUserCard';
 
@@ -36,6 +37,32 @@ export class TransactionsUser extends React.Component{
     render(){
       return(
         <div className="container">
+          <div className="sidenav">
+          <Link className="view-inquiries-link" to="/UserProfile">User Profile</Link>
+            { this.props.userrole==="User"&&
+              // Role == User ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                //View Inquiries - /InquiriesUser
+                  //List inquiries made by user. Needs: userid
+                  <div>
+                    <hr></hr>
+                    <Link className="view-transactions-link" to="/TransactionsUser">View Transactions</Link>
+                    <hr></hr>
+                    <Link className="view-inquiries-link" to="/InquiriesUser">View Inquiries</Link>
+              </div>
+            }
+            
+
+            
+            { this.props.userrole==="Admin"&&
+              <div>
+                <hr></hr>
+              <Link className="view-inquiries-link" to="/InquiriesAdmin">Process Inquiries</Link>
+              <hr></hr>
+              <Link className="view-transactions-link" to="/TransactionsAdmin">View Transactions</Link>
+              </div>
+            }
+
+          </div>
           <div className="main">
             <h3>Transactions</h3>
             <div className="results-list">

@@ -29,7 +29,7 @@ export class Navbar extends React.Component{
                 <Link key={this.props.userid} className="link" to="/EditAnimal">Edit Animals</Link>
                 }
                 </div>
-                <div class="buttonsdiv">
+                <div className="buttonsdiv">
                 {!this.props.loggedin&&
                     <span>
                     <Link className="loginbutton" to="/Login">Login</Link>

@@ -8,7 +8,7 @@ export class AnimalCardSearch extends React.Component{
     render(){
         return(
             <div className="animallist">
-                <img class="searchimg" src={this.props.url} width="250px" height="250px"></img>
+                <img className="searchimg" src={this.props.url} width="250px" height="250px"></img>
                 <p><span className="animalnames">Name: {this.props.name}</span></p>
                 
                 <p>Type: {this.props.type}</p>

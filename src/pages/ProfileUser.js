@@ -101,14 +101,16 @@ export class UserProfile extends React.Component{
       return(
         <div className="container">
           <div className="sidenav">
+          <Link className="view-inquiries-link" to="/UserProfile">User Profile</Link>
             { this.props.userrole==="User"&&
               // Role == User ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                 //View Inquiries - /InquiriesUser
                   //List inquiries made by user. Needs: userid
                   <div>
-                  <Link className="view-transactions-link" to="/TransactionsUser">View Transactions</Link>
-                  <hr></hr>
-              <Link className="view-inquiries-link" to="/InquiriesUser">View Inquiries</Link>
+                    <hr></hr>
+                    <Link className="view-transactions-link" to="/TransactionsUser" >View Transactions</Link>
+                    <hr></hr>
+                    <Link className="view-inquiries-link" to="/InquiriesUser">View Inquiries</Link>
               </div>
             }
             
@@ -116,6 +118,7 @@ export class UserProfile extends React.Component{
             
             { this.props.userrole==="Admin"&&
               <div>
+                <hr></hr>
               <Link className="view-inquiries-link" to="/InquiriesAdmin">Process Inquiries</Link>
               <hr></hr>
               <Link className="view-transactions-link" to="/TransactionsAdmin">View Transactions</Link>
