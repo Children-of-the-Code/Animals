@@ -17,13 +17,23 @@ code {
 .navbar{
   width:auto;
   display: block;
+  height:50px;
+  background:rgba(64, 224, 208, 0.21);
+  margin-top:10px;
+  display: flex;
+  border-radius:40px;
+}
+.linkdiv{
+  display:inline;
+  flex:1;
 }
 
+
 .loginbutton{
-  display: inline;
+  
   border:1px double rgb(14, 114, 125);
   border-radius:50px;
-  float:right;
+  
   padding:2px 10px 4px 10px;
   text-decoration: none;
   text-align: center;
@@ -32,6 +42,13 @@ code {
   font-size:1.05em;
   box-shadow:-2px -2px 4px aqua,2px 2px 4px gray,-2px 2px 4px gray, 2px -2px 4px aqua;
   margin:5px;
+  margin-top:0px;
+  
+}
+.buttonsdiv{
+  flex:1;
+margin-right: 10px;
+text-align:right;
 }
 .loginbutton:hover{
 color:lightcoral;
@@ -43,7 +60,17 @@ color:lightcoral;
   box-shadow:-2px -2px 4px aqua,2px 2px 4px aqua,-2px 2px 4px aqua, 2px -2px 4px aqua;
 }
 .link{
-  padding: 10px; 
+  padding: 5px; 
+  padding-left:7px;
+  padding-right:7px;
+  text-decoration:none;
+  background-color:antiquewhite;
+  margin:5px;
+  border-radius: 30px;
+  box-shadow:3px 3px 5px rgb(176, 172, 172);
+}
+.link:active{
+  background-color:blue;
 }
 
 
@@ -119,5 +146,52 @@ font-weight: bold;
 
 .sale{
   color:blueviolet;
+}
+
+
+
+.reg{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  border: 10px;
+}
+.formstyle{
+  background-color: white;
+  width:25%;
+  align-content: center;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding:0px 150px;
+  padding-bottom: 10px;
+  border-radius: 30px;
+}
+h1{
+  display:flex;
+  justify-content: center;
+}
+.reginput{
+  width:40%;
+  height:20px;
+  display:flex;
+  justify-content: center;
+  margin:0px auto;
+  padding:10px;
+}
+button{
+  margin:10px auto;
+  justify-content: center;
+  display:block;
+  font-size:1em;
+  font-weight:100;
+  margin-top:20px;
+  outline:none;
+  border-radius: 5px;
+  transition: .2s ease-in;
+  cursor:pointer;
 }
 

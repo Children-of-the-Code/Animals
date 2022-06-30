@@ -81,13 +81,15 @@ export class LoginUser extends React.Component{
     render(){
         return(
             <div>
-                <h2>Login</h2>
-                <div>
+                
+                <div className='reg'>
                     {this.state.loggedin===false&&
                     <div>
-                        <form onSubmit={this.handleSubmit}>
-                    <p>Username: <input name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
-                    <p>Password: <input name="password" type="password" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
+                        
+                        <form className="formstyle" onSubmit={this.handleSubmit}>
+                        <h1>Login</h1>
+                    <p>Username: <input className="reginput" name="username" type="text" onChange={event=>{this.capcredentials(event, "username")}}></input></p>
+                    <p>Password: <input className="reginput" name="password" type="password" onChange={event=>{this.capcredentials(event, "password")}}></input></p>
                     <button type="submit" className="login" >Login</button>
                     <p>{this.state.text}</p>
                     </form>

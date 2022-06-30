@@ -10,8 +10,6 @@ import {
 import {Home} from './pages/Home';
 import {Search} from './pages/Search';
 import { LoginUser } from './pages/LoginUser';
-
-import {AddAnimal} from './pages/AddAnimal';
 import {RegistrationUser} from './pages/RegistrationUser';
 
 import {EditAnimal} from './pages/EditAnimal';
@@ -56,10 +54,11 @@ class App extends React.Component {
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           <Route path="/Registration" element={<RegistrationUser/>}/>
           {this.state.userrole==="Admin"&&
+          <div>
           <Route path="/EditAnimal" element={<EditAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
-
+           </div> }
 
         </Routes>
         </div>

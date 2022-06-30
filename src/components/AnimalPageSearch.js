@@ -19,7 +19,6 @@ export class AnimalPageSearch extends React.Component{
     }
     componentDidMount(){  
         this.inquiries();
-        
         this.getcurrentanimalid();
         this.componentDidUpdate();
     }
