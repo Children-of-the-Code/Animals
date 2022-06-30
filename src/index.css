@@ -323,5 +323,10 @@ button{
   min-width: 700px;
 }
 
+.strikeout{
+  text-decoration: line-through;
+  text-decoration-color:hotpink;
+}
+
 
 

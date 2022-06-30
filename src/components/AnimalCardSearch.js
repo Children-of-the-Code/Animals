@@ -25,17 +25,17 @@ export class AnimalCardSearch extends React.Component{
                 
                 {this.props.sale>0&&
                 <span className="sale">
-                    <p>Old Adoption Fee: ${parseFloat((this.props.fee)/((100-this.props.sale)/100).toFixed(2)).toFixed(2)}</p>
+                    <p className="strikeout">Old Adoption Fee: ${parseFloat((this.props.fee)/((100-this.props.sale)/100).toFixed(2)).toFixed(2)}</p>
                     
                     <p>Discount: %{this.props.sale}</p>
                     
                     
-                    <p>Fee With Discount Included: ${this.props.fee}</p>
+                    <p>Fee With Discount Included: ${(this.props.fee).toFixed(2)}</p>
                     
                 </span>}
 
                 {!this.props.sale&&
-                <p>Adoption Fee: ${this.props.fee}</p>
+                <p>Adoption Fee: ${(this.props.fee).toFixed(2)}</p>
                 }
 
             </div>

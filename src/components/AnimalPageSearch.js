@@ -164,16 +164,16 @@ export class AnimalPageSearch extends React.Component{
 
                 {this.state.currentAnimal.sale>0&&
                 <span className="sale">
-                    <p>Old Adoption Fee: ${parseFloat((this.state.currentAnimal.fee)/((100-this.state.currentAnimal.sale)/100).toFixed(2)).toFixed(2)}</p>
+                    <p className="strikeout">Old Adoption Fee: ${parseFloat((this.state.currentAnimal.fee)/((100-this.state.currentAnimal.sale)/100).toFixed(2)).toFixed(2)}</p>
                     
                     <p>Discount: %{this.state.currentAnimal.sale}</p>
                     
                     
-                    <p>Fee With Discount Included: ${this.state.currentAnimal.fee}</p>
+                    <p>Fee With Discount Included: ${(this.state.currentAnimal.fee).toFixed(2)}</p>
                     
                 </span>}
                 {!this.state.currentAnimal.sale&&
-                <p>Adoption Fee: ${this.state.currentAnimal.fee}</p>
+                <p>Adoption Fee: ${parseFloat(this.state.currentAnimal.fee).toFixed(2)}</p>
                 }
 
                 <p>{this.buttoncheck(this.props.loggedin, this.state.inquiry)}

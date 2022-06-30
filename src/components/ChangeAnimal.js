@@ -39,7 +39,7 @@ export class ChangeAnimal extends React.Component{
     handleSale(e){
         e.preventDefault();
         let sale;
-        if(this.state.sale){
+        if(this.state.sale&&this.state.sale!=100){
             sale=this.state.sale;
         }else{
             sale=this.props.currentAnimal.sale;
