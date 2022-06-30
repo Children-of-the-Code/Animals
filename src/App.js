@@ -13,6 +13,7 @@ import { InquiriesUser } from './pages/InquiriesUser';
 import { InquiriesAdmin } from './pages/InquiriesAdmin';
 import { TransactionsUser } from './pages/TransactionsUser';
 import { TransactionsAdmin } from './pages/TransactionsAdmin';
+import { DonationForm } from './components/DonationForm';
 
 
 class App extends React.Component {
@@ -65,6 +66,9 @@ class App extends React.Component {
           <Route path="/TransactionsAdmin" element={<TransactionsAdmin loggedin={this.state.loggedin} userid={this.state.userid}/>}/>
         </Routes>
         </div>
+      </div>
+      <div>
+        <DonationForm loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></DonationForm>
       </div>
     </HashRouter>
     </div>

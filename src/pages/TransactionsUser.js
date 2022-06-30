@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { DonationForm } from '../components/DonationForm';
+import { TransactionCard } from '../components/TransactionCard';
 
 export class TransactionsUser extends React.Component{
     constructor(props){
@@ -11,7 +12,14 @@ export class TransactionsUser extends React.Component{
     }
 
     componentDidMount(){
+      this.addTransactions()
+    }
 
+    componentDidUpdate(){
+      this.addTransactions()
+    }
+
+    addTransactions(){
       let temparray=[];
       
       if (this.props.userid){
@@ -34,12 +42,11 @@ export class TransactionsUser extends React.Component{
             <div className="results-list">
 
             {this.state.allTransactions.map(transaction => (
-                  <p>Date: {transaction.date_added} | Amount: {transaction.amount} | Type: Donation</p>
+                  <TransactionCard key={transaction.donation_id} date={transaction.date_added} amount={transaction.amount}/>
                 )
               )
             }
             </div>
-            <DonationForm userid={this.props.userid}/>
           </div>
         </div>
       )
