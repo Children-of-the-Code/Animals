@@ -74,11 +74,9 @@ export class RegistrationUser extends React.Component{
 
     render(){
         return (
-            <div className='form'>
-                <div>
-                    <h1>User Registration</h1>
-                </div>
+            <div className='reg'>
                 <form onSubmit={this.handleSubmit}>
+                    <h1>User Registration</h1>
                     <input placeholder= "First Name" onChange={event => this.handleChange("fname", event)} type="text" required/><br></br>
 
                     <input placeholder="Last Name" onChange={event => this.handleChange("lname", event)} type="text" required/><br></br>

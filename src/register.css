@@ -1,19 +1,33 @@
-.form{
-    position:relative;
+.reg{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
     display: block;
     border: 10px;
+}
+form{
+    background-color: white;
+    width:25%;
+    align-content: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0px 150px;
+    padding-bottom: 10px;
+    border-radius: 30px;
 }
 h1{
     display:flex;
     justify-content: center;
-    margin-left: 110px;
 }
 input{
     width:40%;
     height:20px;
     display:flex;
     justify-content: center;
-    margin:20px auto;
+    margin:0px auto;
     padding:10px;
 }
 button{
