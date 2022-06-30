@@ -156,6 +156,7 @@ export class AnimalPageSearch extends React.Component{
                 <p>Name: {this.state.currentAnimal.name}</p>
                 <p>Type: {this.state.currentAnimal.type}</p>
                 <p>Breed: {this.state.currentAnimal.breed}</p>
+                <p>Age: {this.state.currentAnimal.age}</p>
                 <p>Gender: {this.state.currentAnimal.gender}</p>
                 <p>Temperament: {this.state.currentAnimal.temperament}</p>
                 <p>Description: {this.state.currentAnimal.description}</p>
