@@ -4,9 +4,10 @@
   z-index: 1;
   top: 200px;
   left: 40px;
-  background: #eee;
+  background: white;
   overflow-x: hidden;
   padding: 8px 0;
+  border-radius:20px;
 }
 
 .view-inquiries-link, .view-transactions-link {
@@ -22,19 +23,7 @@
   cursor: pointer;
 }
 
-.main {
-  margin-left: 230px; /* Same width as the sidebar + left position in px */
-  margin-right: 200px;
-  margin-top: 70px;
-  margin-bottom: 100px;
-  font-size: 16px; /* Increased text to enable scrolling */
-  padding-top: 10px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 40px;
-  border: 1px solid;
-  min-width: 700px;
-}
+
 
 h3{
   font-size: 30px;

@@ -37,9 +37,9 @@ export class AdminInquiryCard extends React.Component{
     return(
       <div className="flex-container">
         <div className="flex-item">
-        <p>ID: {this.props.inquiryId} | Username: {this.props.username} | Animal Name: {this.props.animalName} | Status: {this.props.inquiryStatus}</p>
-        </div>
-        <div className="flex-item">
+        <p>ID: {this.props.inquiryId} | Username: {this.props.username} | Animal Name: {this.props.animalName} | Status: {this.props.inquiryStatus}
+        
+        
           { this.props.inquiryStatus == "Pending"&&
             <span className = "result-buttons">
               <button onClick={() => {this.submitStatus(this.props.inquiryId,"Approved")}}>Approve</button>
@@ -47,6 +47,7 @@ export class AdminInquiryCard extends React.Component{
               <CancelInquiryButton inquiryId={this.props.inquiryId}/>
             </span>
           }
+          </p>
         </div>
       </div>
     )

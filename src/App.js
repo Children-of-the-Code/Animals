@@ -1,9 +1,5 @@
 import React from 'react';
-
 import{Navbar} from './components/Navbar';
-import ReactDOM from 'react-dom/client';
-import{Navbar} from './components/Navbar';
-import reportWebVitals from './reportWebVitals';
 import {
   Route,
   Routes,
@@ -82,10 +78,10 @@ class App extends React.Component {
         </Routes>
         </div>
       </div>
-      <div>
+    </HashRouter>
+    <div className='center'>
         <DonationForm loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.role} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}></DonationForm>
       </div>
-    </HashRouter>
     </div>
   );
   }

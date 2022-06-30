@@ -66,22 +66,23 @@ export class DonationForm extends React.Component{
 
   render(){ // Takes userid
     return(
-      <div>
+      <div className='footer'>
 
-        <h2>Submit A Donation</h2>
-        <p>How much would you like to donate?</p>
 
-        <form onSubmit={this.handleSubmit}>
+        <h2 className="footerelement">Submit A Donation</h2>
+        <p className="footerelement">How much would you like to donate?</p>
+
+        <form onSubmit={this.handleSubmit} className="footerelement">
           <label htmlFor="amount">$</label>
-          <input type="number" id="amount" name="amount" value={this.state.amount} onChange={event => this.handleChange("amount", event)} required></input><br/>
-          <input type="submit" value="Donate" className="donate-buton"></input><br/>
+          <input type="number" id="amount" name="amount" value={this.state.amount} onChange={event => this.handleChange("amount", event)} required></input>
+          <button type="submit"  className="footerelement">Donate</button>
         </form>
 
         {this.state.donationSubmitted == true&&
-          <p>Thanks for your donation!</p>
+          <p className="footerelement">Thanks for your donation!</p>
         }
         {this.state.notEnough == true&&
-          <p>Please enter an amount more than 0.</p>
+          <p className="footerelement">Please enter an amount more than 0.</p>
         }
       </div>
     )
