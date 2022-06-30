@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { AdminInquiryCard } from '../components/AdminInquiryCard';
 import '../inquiries.css';
 
 export class InquiriesAdmin extends React.Component{
@@ -8,12 +9,17 @@ export class InquiriesAdmin extends React.Component{
       this.state={
         allInquiries:[]
       }
-
-      this.setStatus = this.setStatus.bind(this);
-      this.refreshPage = this.refreshPage.bind(this);
     }
 
     componentDidMount(){
+      this.getInquiries()
+    }
+
+    componentDidUpdate(){
+      this.getInquiries()
+    }
+
+    getInquiries(){
 
       let temparray=[];
 
@@ -27,70 +33,14 @@ export class InquiriesAdmin extends React.Component{
       })
     }
 
-    refreshPage() {
-      window.location.reload(false);
-    }
-
-    setStatus(id, status){
-
-      let data = {
-        "inquiry_id": id,
-        "status": status
-      }
-
-      console.log(data);
-  
-      fetch("https://animalrescueproject.azurewebsites.net/inquiries/status", {
-              method: 'PUT',
-              mode: "cors",
-              headers:{
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-          })
-          .then(response=>response.json())
-          .then(data => {
-            console.log('Success:', data);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-
-          this.refreshPage();
-
-    }
-
     render(){
       return(
         <div className="container">
           <div className="main">
             <h3>Inquiries</h3>
-            <div>
+            <div className="inquiries-list">
             {this.state.allInquiries.map(inquiry => (
-                  <div className="flex-container">
-                    <div className="flex-item">
-                    <p>ID: {inquiry.inquiry_id} | Username: {inquiry.user.username} | Animal Name: {inquiry.animal.name} | Status: {inquiry.status}</p>
-                    </div>
-                    <div className="flex-item">
-                    { inquiry.status == "Pending"&&
-                      <span className = "result-buttons">
-                        <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Approved")}}>Approve</button>
-                        <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Denied")}}>Deny</button>
-                        <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </span>
-                    }
-                    { inquiry.status == "Approved"&&
-                      <span className = "result-buttons">
-                        <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </span>
-                    }
-                    { inquiry.status == "Denied"&&
-                      <span className = "result-buttons">
-                        <button onClick={() => {this.setStatus(inquiry.inquiry_id,"Cancelled")}}>Cancel</button>
-                      </span>
-                    }
-                    </div>
-                  </div>
+                  <AdminInquiryCard key={inquiry.inquiry_id} inquiryId={inquiry.inquiry_id} username={inquiry.user.username} animalName={inquiry.animal.name} inquiryStatus={inquiry.status}/>
                 )
               )
             }
