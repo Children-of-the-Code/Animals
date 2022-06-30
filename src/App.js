@@ -54,11 +54,13 @@ class App extends React.Component {
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           <Route path="/Registration" element={<RegistrationUser/>}/>
           {this.state.userrole==="Admin"&&
-          <div>
-          <Route path="/EditAnimal" element={<EditAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
           
+           
+          <Route path="/EditAnimal" element={<EditAnimal loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
+          }
+          {this.state.userrole==="Admin"&&
           <Route path="/Login" element={<LoginUser key={this.state.userid} loggedin={this.state.loggedin} userid={this.state.userid} role={this.state.userrole} handleLogin={this.handleLogin} handleId={this.handleId} handleRole={this.handleRole}/>}/>
-           </div> }
+          }
 
         </Routes>
         </div>
